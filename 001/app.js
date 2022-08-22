@@ -5,6 +5,12 @@ function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
+const cats = [
+    {name: 'Pilkis', weight: 4},
+    {name: 'Murka', weight: 7},
+    {name: 'Keris', weight: 3}
+];
+
 // console.log(rand(5, 10));
 
 const mas = [...Array(5)].map(_ => rand(100, 999));
@@ -30,3 +36,10 @@ console.log(map);
 // console.log('A', a);
 // console.log(naujasA);
 // console.log(tasPatA);
+
+const cats2 = cats.map(c =>  ({...c, weight: c.weight + 1})  );
+
+// const weight = [...cats].map(mass => mass.weight + 1)
+
+// console.log(cats);
+// console.log(cats2);

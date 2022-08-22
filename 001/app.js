@@ -39,7 +39,11 @@ console.log(map);
 
 const cats2 = cats.map(c =>  ({...c, weight: c.weight + 1})  );
 
+const cats3 = cats.map(c =>  ({...c, weight: rand(3, 10)})  );
+
+const cats4 = cats.map(c =>  ({...c, takesPill: rand(0, 1) ? 'yes' : 'no'}) );
+
 // const weight = [...cats].map(mass => mass.weight + 1)
 
 // console.log(cats);
-// console.log(cats2);
+console.log(cats4);

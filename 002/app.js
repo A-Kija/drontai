@@ -26,19 +26,44 @@ const data = [
 
   const d5 = data2.filter(e => e.color == 'red');
   const d6 = data.filter(e => e.type != 'animal');
-//   data.filter(e => e.type == 'animal').forEach(a => console.log(a.name));
+
+  // data.filter(e => e.type == 'animal').forEach(a => console.log(a.name));
 
   const d7 = data.filter(e => e.type == 'animal' && e.color == 'green');
+  const d8 = data.filter(e => e.type == 'car' || e.type == 'man').map(e => e.color != 'red' ? {...e, color: 'black'} : {...e});
+  const d9 = data.filter(e => e.id != 6);
+//   const d9 = data.filter(e => e.id != 6).map((e, i) => ({...e, id: i + 1}));
 
-  const d8 = data.filter(e => e.type == 'car' || e.type == 'man')
-  .map(e => e.color != 'red' ? {...e, color: 'black'} : {...e});
+
+const d10 = [...data];
+// d10.sort((a, b) => {
+//     if (a.name > b.name) {
+//         return -1;
+//     }
+//     if (a.name < b.name) {
+//         return 1
+//     }
+//     return 0;
+// });
+d10.sort((a, b) => b.name.localeCompare(a.name));
+
+const d11 = [...data];
+d11.sort((a, b) => b.id - a.id);
+
+const d12 = [...data];
+d12.sort((a, b) => b.name.length - a.name.length);
 
 
+const d13 = [...data];
+// d13.sort((_, b) => b.type != 'car' ? -1 : 1);
+d13.sort(a => a.type == 'car' ? -1 : 1);
 
 //   const d3 = data.map(e => ({...e}));
 //   d3[1].red = "******";
 //   console.log(data);
-  console.log(d8);
+console.log(d13);
+
+//   console.log('Z' < 'Ž');
 
 
   

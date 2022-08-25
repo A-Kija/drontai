@@ -1,7 +1,7 @@
-function Cat({catName, weight}) {
+function Cat({cat}) {
 
     return (
-        <div>{catName} {weight}</div>
+        <div>{cat.name} {cat.weight}</div>
     )
 }
 

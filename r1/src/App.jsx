@@ -16,7 +16,7 @@ function App() {
                 <h1>Lists</h1>
                 <div className="container">
                 {
-                    [...cats].sort((a, b) => a.name.localeCompare(b.name)).map((cat, i) => <Cat i={i} key={cat.id} cat={cat} />)
+                    [...cats].sort((a, b) => a.name.localeCompare(b.name)).map((cat, i) => cat.weight < 4 ? null : <Cat i={i} key={cat.name} cat={cat} />)
                 }
                 </div>
                 {/* <div className="container">

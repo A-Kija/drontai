@@ -7,6 +7,7 @@ function App() {
     const [color, setColor] = useState('crimson');
     const [size, setSize] = useState(30);
     const [count, setCount] = useState(1);
+    const [ls, setLs] = useState(5);
 
     /*
     const color <--- state (props) 
@@ -22,7 +23,7 @@ function App() {
     }
 
     const doSize = () => {
-        setSize(40);
+        setSize(s => s === 40 ? 30 : 40);
     }
 
     const doCount = () => {
@@ -35,11 +36,14 @@ function App() {
             <header className="App-header">
             <h1 style={{
                 color: color,
-                fontSize: size + 'px'
+                fontSize: size + 'px',
+                letterSpacing: ls + 'px'
                 }}>STATE {count}</h1>
             <button onClick={clicked}>CLICK!</button>
             <button onClick={doSize}>DO SIZE</button>
             <button onClick={doCount}>+1</button>
+            <button onClick={() => setLs(5)}>LS 5</button>
+            <button onClick={() => setLs(10)}>LS 10</button>
             </header>
         </div>
     );

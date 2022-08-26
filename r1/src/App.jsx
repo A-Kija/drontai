@@ -18,7 +18,7 @@ function App() {
     // }
 
     const clicked = () => {
-        setColor('skyblue');
+        setColor(c => c === 'skyblue' ? 'crimson' : 'skyblue');
     }
 
     const doSize = () => {
@@ -26,8 +26,6 @@ function App() {
     }
 
     const doCount = () => {
-        setCount(c => c + 1);
-        setCount(c => c + 1);
         setCount(c => c + 1);
     }
 

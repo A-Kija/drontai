@@ -6,6 +6,7 @@ function App() {
 
     const [color, setColor] = useState('crimson');
     const [size, setSize] = useState(30);
+    const [count, setCount] = useState(1);
 
     /*
     const color <--- state (props) 
@@ -24,6 +25,12 @@ function App() {
         setSize(40);
     }
 
+    const doCount = () => {
+        setCount(count + 1);
+        setCount(count + 1);
+        setCount(count + 1);
+    }
+
 
     return (
         <div className="App">
@@ -31,9 +38,10 @@ function App() {
             <h1 style={{
                 color: color,
                 fontSize: size + 'px'
-                }}>STATE</h1>
+                }}>STATE {count}</h1>
             <button onClick={clicked}>CLICK!</button>
             <button onClick={doSize}>DO SIZE</button>
+            <button onClick={doCount}>+1</button>
             </header>
         </div>
     );

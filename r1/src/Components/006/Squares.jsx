@@ -16,7 +16,8 @@ function Squares() {
                 {
                     sq.map((n, i) => <div style={
                         { 
-                            backgroundColor: n.color 
+                            backgroundColor: n.color,
+                            borderRadius: n.number % 2 ? null : '50%' 
                         }
                     } key={i}>{n.number}</div>)
                 }

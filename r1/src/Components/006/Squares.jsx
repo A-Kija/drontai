@@ -16,11 +16,12 @@ function Squares() {
 
     return (
         <>
+            <h1>STATE 2</h1>
             <div className="container">
                 {
                     sq.map((n, i) => <div style={
                         { 
-                            backgroundColor: n.color,
+                            backgroundColor: n.number < 300 ? 'black' : n.color,
                             borderRadius: n.number % 2 ? null : '50%' 
                         }
                     } key={i}>{n.number}</div>)

@@ -16,7 +16,7 @@ function Squares() {
 
     return (
         <>
-            <h1>STATE 2</h1>
+            <h1>STATE { sq.filter(s => s.number < 300).length} </h1>
             <div className="container">
                 {
                     sq.map((n, i) => <div style={

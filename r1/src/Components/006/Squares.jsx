@@ -14,7 +14,11 @@ function Squares() {
         <>
             <div className="container">
                 {
-                    sq.map((n, i) => <div style={{ backgroundColor: n.color }} key={i}>{n.number}</div>)
+                    sq.map((n, i) => <div style={
+                        { 
+                            backgroundColor: n.color 
+                        }
+                    } key={i}>{n.number}</div>)
                 }
             </div>
             <button onClick={add}>add []</button>

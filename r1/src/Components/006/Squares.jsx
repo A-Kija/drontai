@@ -6,6 +6,7 @@ function Squares() {
     
 
     const [sq, setSq] = useState([]);
+    const [selected, setSelected] = useState(null);
 
     const add = () => {
         setSq(s => [...s, {
@@ -36,9 +37,15 @@ function Squares() {
         setSq(s => s.map(square => square.number < 300 ? {...square, show: false} : {...square, show: true}));
     }
 
+    const doClick = num => {
+        setSelected(num);
+        setSq(s => s.map(square => square.number === num ? {...square, show: false} : {...square}));
+
+    }
+
     return (
         <>
-            <h1>STATE { sq.filter(s => s.number < 300).length} </h1>
+            <h1>{selected} STATE { sq.filter(s => s.number < 300).length} </h1>
             <div className="container">
                 {
                     sq.map((n, i) => n.show ? <div style={
@@ -46,7 +53,7 @@ function Squares() {
                             backgroundColor: n.number < 300 ? 'black' : n.color,
                             borderRadius: n.number % 2 ? null : '50%' 
                         }
-                    } key={i}>{n.number}</div> : null)
+                    } key={i} onClick={() => doClick(n.number)}>{n.number}</div> : null)
                 }
             </div>
             <div className="container">

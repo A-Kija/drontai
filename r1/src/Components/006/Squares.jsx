@@ -40,7 +40,14 @@ function Squares() {
     const doClick = num => {
         setSelected(num);
         setSq(s => s.map(square => square.number === num ? {...square, show: false} : {...square}));
+    }
 
+    const resurect = () => {
+        setSq(s => s.map(square => square.number === selected ? {...square, show: true} : {...square}));
+    }
+
+    const first5 = () => {
+        setSq(s => s.map((square, i) => i < 5 ? {...square, show: true} : {...square, show: false}));
     }
 
     return (
@@ -63,6 +70,8 @@ function Squares() {
                 <button onClick={sortDefault}>sort [DEFAULT]</button>
                 <button onClick={showBlack}>show black</button>
                 <button onClick={showNonBlack}>show NON black</button>
+                <button onClick={resurect}>Resurect</button>
+                <button onClick={first5}>show 5</button>
             </div>
         </>
     )

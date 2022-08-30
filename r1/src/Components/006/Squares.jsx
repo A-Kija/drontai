@@ -25,7 +25,7 @@ function Squares() {
     }
 
     const sortDefault = () => {
-        setSq(s => [...s].sort((a, b) => a.row - b.row));
+        setSq(s => s.map(square => ({...square, show: true})).sort((a, b) => a.row - b.row));
     }
 
     const showBlack = () => {

@@ -4,7 +4,7 @@ function Text() {
 
     const [text, setText] = useState('');
     const [color, setColor] = useState('#7caa0c');
-    const [range, setRange] = useState('0');
+    const [range, setRange] = useState(0);
     const [textNow, setTextNow] = useState('');
 
     const control = e => {
@@ -17,7 +17,7 @@ function Text() {
     }
 
     const rangeControl = e => {
-        setRange(e.target.value);
+        setRange(parseInt(e.target.value));
     }
 
     return (
@@ -34,8 +34,10 @@ function Text() {
                 <button style={{marginTop: '10px'}} onClick={() => setColor('#ff0000')}>Set Red</button>
             </div>
             <div className="form-container">
-                <h2>RANGE: {range.padStart(3, 0)}</h2>
+                <h2>RANGE: {('' + range).padStart(3, 0)}</h2>
                 <input type="range" onChange={rangeControl} value={range}></input>
+                <button style={{marginTop: '10px'}} onClick={() => setRange(s => Math.min(100, s + 10))}>Plus</button>
+                <button style={{marginTop: '10px'}} onClick={() => setRange(s => Math.max(0, s - 10))}>Minus</button>
             </div>
         </>
     )

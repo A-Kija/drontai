@@ -116,3 +116,28 @@ button {
         transform: translateY(0);
     }
 }
+
+.form-container {
+    margin: 10px;
+    padding: 30px 40px 40px;
+    border: 3px dashed skyblue;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h2 {
+        margin: 0 0 30px 0;
+        color: cornflowerblue;
+    }
+    input[type=text] {
+        font-size: 28px;
+        padding: 5px;
+        border: none;
+        outline: none;
+        background-color: white;
+        font-weight: bold;
+        color: black;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}

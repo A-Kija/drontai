@@ -5,6 +5,7 @@ function Text() {
     const [text, setText] = useState('');
     const [color, setColor] = useState('#7caa0c');
     const [range, setRange] = useState('0');
+    const [textNow, setTextNow] = useState('');
 
     const control = e => {
         // Number(e.target.value) && setText(e.target.value);
@@ -23,8 +24,9 @@ function Text() {
 
         <>
             <div className="form-container">
-                <h2>TEXT</h2>
+                <h2>TEXT: {textNow}</h2>
                 <input type="text" onChange={control} value={text}></input>
+                <button style={{marginTop: '10px'}} onClick={() => setTextNow(text)}>Text Now</button>
             </div>
             <div className="form-container">
                 <h2 style={{color}}>COLOR</h2>

@@ -15,7 +15,12 @@ function Checkbox() {
     }
 
     const radioChange = e => {
-
+        const v = e.target.value;
+        const r = {};
+        for (const a in radioData) {
+            r[a] = a === v ? true : false;
+        }
+        setRadio(r);
     }
 
     const randomCheck = () => {

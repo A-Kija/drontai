@@ -15,6 +15,7 @@ function Select() {
                 <option value="18">Batuotas Katinas</option>
             </select>
 
+            <button onClick={() => setSelect(2)}>Delfinas</button>
         </div>
         </>
     );

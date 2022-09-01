@@ -4,20 +4,20 @@ function Checkbox() {
         <>
             <div className="form-container">
                 <div>
-                    <input type="checkbox" value="A"></input>
-                    <label>A Raidė</label>
+                    <input type="checkbox" value="A" id="_1"></input>
+                    <label htmlFor="_1">A Raidė</label>
                 </div>
                 <div>
-                    <input type="checkbox" value="B"></input>
-                    <label>B Raidė</label>
+                    <input type="checkbox" value="B" id="_2"></input>
+                    <label htmlFor="_2">B Raidė</label>
                 </div>
                 <div>
-                    <input type="checkbox" value="C"></input>
-                    <label>C Raidė</label>
+                    <input type="checkbox" value="C" id="_3"></input>
+                    <label htmlFor="_3">C Raidė</label>
                 </div>
                 <div>
-                    <input type="checkbox" value="D"></input>
-                    <label>D Raidė</label>
+                    <input type="checkbox" value="D" id="_4"></input>
+                    <label htmlFor="_4">D Raidė</label>
                 </div>
 
             </div>

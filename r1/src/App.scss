@@ -153,4 +153,9 @@ button {
     button {
         margin-top: 10px;
     }
+
+    label {
+        cursor: pointer;
+        user-select: none;
+    }
 }

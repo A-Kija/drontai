@@ -1,5 +1,5 @@
 import './App.scss';
-import Text from './Components/008/Text';
+import Select from './Components/008/Select';
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <h1>FORMS</h1>
-                    <Text />
+                    <Select />
             </header>
         </div>
     );

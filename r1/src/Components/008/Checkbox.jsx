@@ -1,12 +1,30 @@
 import { useState } from "react";
+import rand from '../../Functions/rand';
+
+const checksData = {A: false, B: true, C: true, D: false};
 
 function Checkbox() {
 
-    const [cb, setCb] = useState({A: false, B: true, C: true, D: false});
+    const [cb, setCb] = useState(checksData);
 
     const change = e => {
         const v = e.target.value;
-        setCb(c => ({...c, [v]: !c[v]})); //jei v = 'A' => A: !c.A
+        setCb(c => ({...c, [v]: !c[v]})); //kai v == 'A' => A: !c.A
+    }
+
+    const randomCheck = () => {
+        const checks = {};
+        for (const a in checksData) {
+            checks[a] = !rand(0, 1);
+        }
+        setCb(checks);
+
+        // setCb({
+        //     A: !rand(0, 1),
+        //     B: !rand(0, 1),
+        //     C: !rand(0, 1),
+        //     D: !rand(0, 1)
+        // });
     }
 
     return (
@@ -28,6 +46,7 @@ function Checkbox() {
                     <input type="checkbox" value="D" id="_4" onChange={change} checked={cb.D}></input>
                     <label htmlFor="_4" style={{color: cb.D ? 'crimson' : null}}>D Raidė</label>
                 </div>
+                <button onClick={randomCheck}>RANDOM</button>
 
             </div>
         </>

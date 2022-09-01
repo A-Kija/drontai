@@ -2,10 +2,12 @@ import { useState } from "react";
 import rand from '../../Functions/rand';
 
 const checksData = {A: false, B: true, C: true, D: false};
+const radioData = {A: false, B: false, C: true, D: false};
 
 function Checkbox() {
 
     const [cb, setCb] = useState(checksData);
+    const [radio, setRadio] = useState(radioData);
 
     const change = e => {
         const v = e.target.value;
@@ -18,7 +20,6 @@ function Checkbox() {
             checks[a] = !rand(0, 1);
         }
         setCb(checks);
-
         // setCb({
         //     A: !rand(0, 1),
         //     B: !rand(0, 1),
@@ -47,7 +48,25 @@ function Checkbox() {
                     <label htmlFor="_4" style={{color: cb.D ? 'crimson' : null}}>D Raidė</label>
                 </div>
                 <button onClick={randomCheck}>RANDOM</button>
+            </div>
 
+            <div className="form-container">
+                <div>
+                    <input type="checkbox" value="A" id="_5" onChange={change} checked={radio.A}></input>
+                    <label htmlFor="_5" style={{color: radio.A ? 'crimson' : null}}>A Raidė</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="B" id="_6" onChange={change} checked={radio.B}></input>
+                    <label htmlFor="_6" style={{color: radio.B ? 'crimson' : null}}>B Raidė</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="C" id="_7" onChange={change} checked={radio.C}></input>
+                    <label htmlFor="_7" style={{color: radio.C ? 'crimson' : null}}>C Raidė</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="D" id="_8" onChange={change} checked={radio.D}></input>
+                    <label htmlFor="_8" style={{color: radio.D ? 'crimson' : null}}>D Raidė</label>
+                </div>
             </div>
         </>
     );

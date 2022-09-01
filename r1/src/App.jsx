@@ -1,5 +1,5 @@
 import './App.scss';
-import Select from './Components/008/Select';
+import Checkbox from './Components/008/Checkbox';
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <h1>FORMS</h1>
-                    <Select />
+                    <Checkbox />
             </header>
         </div>
     );

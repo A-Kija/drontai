@@ -1,5 +1,5 @@
 import './App.scss';
-import Text from './Components/010/Text';
+import Sq from './Components/008/Sq';
 
 function App() {
 
@@ -8,8 +8,8 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>State Uplifting</h1>
-                <Text />
+                <h1>FORMS</h1>
+                    <Sq />
             </header>
         </div>
     );

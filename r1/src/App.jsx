@@ -3,6 +3,7 @@ import Text from './Components/010/Text';
 import { useState } from 'react';
 import Two from './Components/010/Two';
 import Txt from './Components/010/Txt';
+import Show from './Components/010/Show';
 
 
 
@@ -22,7 +23,7 @@ function App() {
             <header className="App-header">
                 <h1>State Uplifting</h1>
                 <h2>TEXT: {textNow}</h2>
-                <h2 style={{textTransform: 'uppercase'}}>{txt}</h2>
+                <Show txt={txt} />
                 <Txt setTxt={setTxt} txt={txt}/>
                 <Text setTextNow={setTextNow} />
                 <div className="container">

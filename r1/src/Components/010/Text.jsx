@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { useState } from 'react';
 
-function Text() {
+function Text({setTextNow}) {
 
     const [text, setText] = useState('');
-    const [textNow, setTextNow] = useState('');
+    
 
     const control = e => {
         setText(e.target.value);
@@ -12,7 +12,7 @@ function Text() {
     return ( 
         <>
         <div className="form-container">
-            <h2>TEXT: {textNow}</h2>
+            
             <input type="text" onChange={control} value={text}></input>
             <button onClick={() => setTextNow(text)}>Text Now</button>
         </div>

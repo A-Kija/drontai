@@ -1,7 +1,8 @@
-import { useState } from 'react';
-function Txt() {
+// import { useState } from 'react';
 
-    const [txt, setTxt] = useState('')
+function Txt({txt, setTxt}) {
+
+    
 
     return (
         <>

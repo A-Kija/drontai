@@ -2,6 +2,7 @@ import './App.scss';
 import Text from './Components/010/Text';
 import { useState } from 'react';
 import Two from './Components/010/Two';
+import Txt from './Components/010/Txt';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
             <header className="App-header">
                 <h1>State Uplifting</h1>
                 <h2>TEXT: {textNow}</h2>
+                <Txt />
                 <Text setTextNow={setTextNow} />
                 <div className="container">
                     {f1 ? <div className="kv"></div> : null}

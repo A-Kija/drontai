@@ -58,7 +58,7 @@ function App() {
                     <button onClick={plus} ref={addButton}>Plus</button>
                 </div>
 
-                <Nine nine={nine}></Nine>
+                <Nine nine={nine} setNine={setNine}></Nine>
 
                 <button onClick={addNine}>Add Nine</button>
 

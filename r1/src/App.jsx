@@ -14,11 +14,12 @@ function App() {
 
     const plus = () => {
         setCount(c => c + 1);
+        console.log('senas:' + count);
     }
 
     useEffect( () => {
         console.log('Dogs Changed Or Added 1');
-        console.log('Count is:' + count);
+        console.log('naujas:' + count);
         // setCount(c => c + 1);
     }, [dogs, count]);
 

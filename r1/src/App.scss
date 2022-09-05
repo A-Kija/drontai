@@ -204,3 +204,52 @@ button {
         color: white;
     }
 }
+
+.containerBin {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 230px;
+    border: 3px dashed skyblue;
+    margin: 20px;
+    padding: 9px;
+
+    div {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        border: 1px solid white;
+        margin: 5px 0;
+    }
+}
+
+.layout-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+.layout-left {
+    width: 40%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 3px solid gray;
+    input {
+        margin-top: 10px;
+    }
+}
+
+.layout-right {
+    width: 60%;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid gray;
+}
+}

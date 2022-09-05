@@ -1,36 +1,44 @@
-import './App.scss';
-import Text from './Components/010/Text';
+import { useEffect } from 'react';
 import { useState } from 'react';
-import Two from './Components/010/Two';
-import Txt from './Components/010/Txt';
-import Show from './Components/010/Show';
-
-
+import './App.scss';
+import Dog from './Components/011/Dog';
 
 function App() {
 
-    const [textNow, setTextNow] = useState('');
+    const [dogs, setDogs] = useState([]);
+    const [count, setCount] = useState(1);
 
-    const [f1, setF1] = useState(false);
-    const [f2, setF2] = useState(false);
-    
-    const [txt, setTxt] = useState('');
+    const add = () => {
+        setDogs(d => [...d, d.length]);
+    }
 
-    // const t = <h2 style={{textTransform: 'uppercase'}}>{txt}</h2>
+    const plus = () => {
+        setCount(c => c + 1);
+    }
+
+    useEffect( () => {
+        console.log('Dogs Changed Or Added 1');
+        console.log('Count is:' + count);
+        // setCount(c => c + 1);
+    }, [dogs, count]);
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1>State Uplifting</h1>
-                <h2>TEXT: {textNow}</h2>
-                <Show txt={txt} />
-                <Txt setTxt={setTxt} txt={txt}/>
-                <Text setTextNow={setTextNow} />
+                <h1>Use Effect {count}</h1>
+
                 <div className="container">
-                    {f1 ? <div className="kv"></div> : null}
-                    {f2 ? <div className="ap"></div> : null}
+                    {
+                        dogs.map((n, i) => <Dog key={n} i={n}></Dog>)
+                    }
                 </div>
-                <Two setF1={setF1} setF2={setF2} />
+
+                <div className="container">
+                    <button onClick={add}>Add Dog</button>
+                    <button onClick={plus}>Plus</button>
+                </div>
+
+
             </header>
         </div>
     );

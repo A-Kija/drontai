@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import './App.scss';
 
+const defaultCount = {one: 0, two: 0};
+
 function App() {
 
     const [counts, setCounts] = useState(null);
@@ -9,7 +11,7 @@ function App() {
     useEffect(() => {
         const data = localStorage.getItem('counts_key');
         if (null === data) {
-            setCounts({one: 0, two: 0});
+            setCounts(defaultCount);
         } else {
             setCounts(JSON.parse(data));
         } 
@@ -32,6 +34,8 @@ function App() {
                 <button onClick={() => setCounts(c => ({...c, two: c.two + 1}))}>Two +</button>
                 <button onClick={() => setCounts(c => ({...c, one: c.one - 1}))}>One -</button>
                 <button onClick={() => setCounts(c => ({...c, two: c.two - 1}))}>Two -</button>
+                <button onClick={() => setCounts(defaultCount)}>Reset</button>
+
             </header>
         </div>
     );

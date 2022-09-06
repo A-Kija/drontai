@@ -12,8 +12,8 @@ function App() {
     return (
         <div className="App">
             <DataPlus.Provider value={{
-                pluses,
-                minuses
+                pluses: pluses,
+                minuses: minuses
             }}>
             <header className="App-header">
                 <h1>Context</h1>

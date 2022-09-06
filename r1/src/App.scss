@@ -253,3 +253,14 @@ button {
     border: 3px solid gray;
 }
 }
+
+.star {
+    margin: 20px;
+    padding: 20px;
+    border: 3px dotted crimson;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: skyblue;
+    font-size: 30px;
+}

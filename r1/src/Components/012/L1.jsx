@@ -1,10 +1,10 @@
 import L2 from "./L2";
 
-function L1({stars}) {
+function L1({ stars }) {
 
     return (
         <div className="star">
-        <L2 stars={stars} />
+            <L2 stars={stars} />
         </div>
     )
 }

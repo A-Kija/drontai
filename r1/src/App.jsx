@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import './App.scss';
-import Kv from './Components/012/Kv';
-import Plus from './Components/012/Plus';
+// import Kv from './Components/012/Kv';
+import Color from './Components/012/Color';
 
 const defaultCount = {one: 0, two: 0};
 
@@ -38,7 +38,7 @@ function App() {
                 <button onClick={() => setCounts(c => ({...c, two: c.two - 1}))}>Two -</button>
                 <button onClick={() => setCounts(defaultCount)}>Reset</button>
             {/* <Kv /> */}
-            <Plus />
+            <Color />
             </header>
         </div>
     );

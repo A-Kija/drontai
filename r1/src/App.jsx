@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import './App.scss';
+import Kv from './Components/012/Kv';
 
 const defaultCount = {one: 0, two: 0};
 
 function App() {
 
     const [counts, setCounts] = useState(null);
-
+   
     useEffect(() => {
         const data = localStorage.getItem('counts_key');
         if (null === data) {
@@ -35,6 +36,7 @@ function App() {
                 <button onClick={() => setCounts(c => ({...c, one: c.one - 1}))}>One -</button>
                 <button onClick={() => setCounts(c => ({...c, two: c.two - 1}))}>Two -</button>
                 <button onClick={() => setCounts(defaultCount)}>Reset</button>
+            <Kv />
             </header>
         </div>
     );

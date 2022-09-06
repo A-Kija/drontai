@@ -35,7 +35,6 @@ function App() {
                 <button onClick={() => setCounts(c => ({...c, one: c.one - 1}))}>One -</button>
                 <button onClick={() => setCounts(c => ({...c, two: c.two - 1}))}>Two -</button>
                 <button onClick={() => setCounts(defaultCount)}>Reset</button>
-
             </header>
         </div>
     );

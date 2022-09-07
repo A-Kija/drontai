@@ -6,6 +6,11 @@
     flex-direction: column;
     padding: 10px;
     box-sizing: border-box;
+    &.row {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
     label {
         font-size: 22px;
         padding: 5px 0;

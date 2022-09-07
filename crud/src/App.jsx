@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './App.scss';
 import Create from './Components/Create';
 import DataContext from './Components/DataContext.jsx';
+import Edit from './Components/Edit';
 import List from './Components/List';
 import { create, read, destroy } from './Functions/localStorage';
 
@@ -56,6 +57,7 @@ function App() {
         </div>
       </div>
     </div>
+    <Edit />
     </DataContext.Provider>
   );
 }

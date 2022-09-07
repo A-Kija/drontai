@@ -5,7 +5,9 @@ import Create from './Components/Create';
 import DataContext from './Components/DataContext.jsx';
 import Edit from './Components/Edit';
 import List from './Components/List';
+import Msg from './Components/Msg';
 import { create, read, destroy, update } from './Functions/localStorage';
+import rand from './Functions/rand';
 
 const key = 'things_shelf';
 
@@ -18,6 +20,8 @@ function App() {
   const [deleteData, setDeleteData] = useState(null);
   const [modalData, setModalData] = useState(null);
   const [editData, setEditData] = useState(null);
+
+  const [msgs, setMsgs] = useState([]);
 
 
   //READ
@@ -32,6 +36,7 @@ function App() {
     }
     create(key, createData);
     setLastUpdate(Date.now());
+    makeMsg('New THING was created!', 'success');
   }, [createData]);
 
   //DELETE
@@ -41,6 +46,7 @@ function App() {
     }
     destroy(key, deleteData.id);
     setLastUpdate(Date.now());
+    makeMsg('The THING was broken!', 'info');
   }, [deleteData]);
 
     //EDIT
@@ -52,6 +58,14 @@ function App() {
       setLastUpdate(Date.now());
     }, [editData]);
 
+    const makeMsg = (text, type) => {
+      const id = rand(1000000, 9999999);
+      setMsgs(m => [...m, {text, id, type}]);
+      setTimeout(() => {
+        setMsgs(m => m.filter(ms => ms.id !== id));
+      }, 4000);
+    }
+
   return (
     <DataContext.Provider value={{
       setCreateData,
@@ -59,7 +73,8 @@ function App() {
       setDeleteData,
       modalData,
       setModalData,
-      setEditData
+      setEditData,
+      msgs
     }}>
     <div className="container">
       <div className="bin">
@@ -72,6 +87,7 @@ function App() {
       </div>
     </div>
     <Edit />
+    <Msg />
     </DataContext.Provider>
   );
 }

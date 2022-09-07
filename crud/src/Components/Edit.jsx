@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import DataContext from "./DataContext.jsx";
 
@@ -8,17 +9,29 @@ function Edit() {
     const [color, setColor] = useState('#000000');
     const [cs, setCs] = useState(false);
 
-    const { setCreateData } = useContext(DataContext);
+    const { modalData, setModalData, setEditData } = useContext(DataContext);
 
-    const add = () => {
-        setCreateData({
+    useEffect(() => {
+        if(null === modalData) {
+            return;
+        }
+        setThing(modalData.thing);
+        setColor(modalData.color);
+        setCs(modalData.cs);
+    }, [modalData]);
+
+    const save = () => {
+        setEditData({
             thing,
             color,
-            cs: cs ? 1 : 0
+            cs: cs ? 1 : 0,
+            id: modalData.id
         });
-        setThing('');
-        setColor('#000000')
-        setCs(false);
+        setModalData(null);
+    }
+
+    if (null === modalData) {
+        return null;
     }
 
     return (
@@ -27,7 +40,7 @@ function Edit() {
                 <div className="card">
                     <div className="top">
                         Edit This Thing
-                        <span className="close">X</span>
+                        <span className="close" onClick={() => setModalData(null)}>X</span>
                     </div>
                     <div className="body">
                         <div className="form">
@@ -45,8 +58,8 @@ function Edit() {
                             <div className="s"></div>
                         </div>
                         <div className="form row">
-                            <button className="blue" onClick={add}>Edit Thing</button>
-                            <button className="red" onClick={add}>Cancel</button>
+                            <button className="blue" onClick={save}>Edit Thing</button>
+                            <button className="red" onClick={() => setModalData(null)}>Cancel</button>
                         </div>
                     </div>
                 </div>

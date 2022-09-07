@@ -4,7 +4,7 @@ import './App.scss';
 import Create from './Components/Create';
 import DataContext from './Components/DataContext.jsx';
 import List from './Components/List';
-import { create, read } from './Functions/localStorage';
+import { create, read, destroy } from './Functions/localStorage';
 
 const key = 'things_shelf';
 
@@ -14,6 +14,7 @@ function App() {
   const [things, setThings] = useState(null);
   const [lastUpdate, setLastUpdate] = useState(Date.now());
   const [createData, setCreateData] = useState(null);
+  const [deleteData, setDeleteData] = useState(null);
 
 
   //READ
@@ -28,13 +29,22 @@ function App() {
     }
     create(key, createData);
     setLastUpdate(Date.now());
+  }, [createData]);
 
-  }, [createData])
+  //DELETE
+  useEffect(() => {
+    if (null === deleteData) {
+      return;
+    }
+    destroy(key, deleteData.id);
+    setLastUpdate(Date.now());
+  }, [deleteData]);
 
   return (
     <DataContext.Provider value={{
       setCreateData,
-      things
+      things,
+      setDeleteData
     }}>
     <div className="container">
       <div className="bin">

@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import DataContext from "./DataContext";
+
 function Row({ thing }) {
+
+    const { setDeleteData } = useContext(DataContext);
 
     return (
         <div className="row">
@@ -11,7 +16,7 @@ function Row({ thing }) {
             </div>
             <div className="buttons">
                 <button className="green">Edit</button>
-                <button className="red">Delete</button>
+                <button className="red" onClick={() => setDeleteData({id: thing.id})}>Delete</button>
             </div>
         </div>
     )

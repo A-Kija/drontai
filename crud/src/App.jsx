@@ -12,13 +12,14 @@ function App() {
 
 
   const [things, setThings] = useState(null);
+  const [lastUpdate, setLastUpdate] = useState(Date.now());
   const [createData, setCreateData] = useState(null);
 
 
   //READ
   useEffect(() => {
     setThings(read(key));
-  }, []);
+  }, [lastUpdate]);
 
   //CREATE
   useEffect(() => {
@@ -26,6 +27,7 @@ function App() {
       return;
     }
     create(key, createData);
+    setLastUpdate(Date.now());
 
   }, [createData])
 

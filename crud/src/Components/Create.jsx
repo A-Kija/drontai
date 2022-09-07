@@ -1,10 +1,25 @@
+import { useContext } from "react";
 import { useState } from "react";
+import DataContext from "./DataContext.jsx";
 
 function Create() {
 
     const [thing, setThing] = useState('');
     const [color, setColor] = useState('');
     const [cs, setCs] = useState(false);
+
+    const { setCreateData } = useContext(DataContext);
+
+    const add = () => {
+        setCreateData({
+            thing,
+            color,
+            cs: cs ? 1 : 0
+        });
+        setThing('');
+        setColor('')
+        setCs(false);
+    }
 
     return (
         <div className="card">
@@ -27,7 +42,7 @@ function Create() {
                     <div className="s"></div>
                 </div>
                 <div className="form">
-                    <button className="blue">Make Thing</button>
+                    <button className="blue" onClick={add}>Make Thing</button>
                 </div>
             </div>
         </div>

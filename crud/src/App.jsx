@@ -2,11 +2,15 @@ import './App.scss';
 
 function App() {
   return (
-    <div>
-      <button>1</button>
-      <button className="blue">2</button>
-      <button className="red">3</button>
-      <button className="green">4</button>
+    <div className="container">
+      <div className="bin">
+        <div className="box-1">
+1
+        </div>
+        <div className="box-2">
+2
+        </div>
+      </div>
     </div>
   );
 }

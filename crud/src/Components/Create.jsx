@@ -5,7 +5,7 @@ import DataContext from "./DataContext.jsx";
 function Create() {
 
     const [thing, setThing] = useState('');
-    const [color, setColor] = useState('');
+    const [color, setColor] = useState('#000000');
     const [cs, setCs] = useState(false);
 
     const { setCreateData } = useContext(DataContext);
@@ -17,7 +17,7 @@ function Create() {
             cs: cs ? 1 : 0
         });
         setThing('');
-        setColor('')
+        setColor('#000000')
         setCs(false);
     }
 

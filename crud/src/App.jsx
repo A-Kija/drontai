@@ -3,17 +3,23 @@ import { useState } from 'react';
 import './App.scss';
 import Create from './Components/Create';
 import DataContext from './Components/DataContext.jsx';
-import { create } from './Functions/localStorage';
+import List from './Components/List';
+import { create, read } from './Functions/localStorage';
 
 const key = 'things_shelf';
 
 function App() {
 
 
+  const [things, setThings] = useState(null);
   const [createData, setCreateData] = useState(null);
 
 
-  
+  //READ
+  useEffect(() => {
+    setThings(read(key));
+  }, []);
+
   //CREATE
   useEffect(() => {
     if (null === createData) {
@@ -25,7 +31,8 @@ function App() {
 
   return (
     <DataContext.Provider value={{
-      setCreateData
+      setCreateData,
+      things
     }}>
     <div className="container">
       <div className="bin">
@@ -33,7 +40,7 @@ function App() {
           <Create />
         </div>
         <div className="box-2">
-          2
+          <List />
         </div>
       </div>
     </div>

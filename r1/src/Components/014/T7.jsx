@@ -18,8 +18,6 @@ function T7() {
         <button onClick={add}>Add</button>
         </>
     )
-
-
 }
 
 export default T7;

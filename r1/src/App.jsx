@@ -1,5 +1,5 @@
 import './App.scss';
-import T6 from './Components/014/T6';
+import T7 from './Components/014/T7';
 
 function App() {
 
@@ -7,7 +7,7 @@ function App() {
         <div className="App">
             <header className="App-header">
             <h1>Total Recall 1</h1>
-            <T6 />
+            <T7 />
             </header>
         </div>
     );

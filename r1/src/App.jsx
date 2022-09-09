@@ -9,6 +9,7 @@ import T22 from './Components/015/T22';
 import T33 from './Components/015/T33';
 import T41 from './Components/015/T41';
 import T42 from './Components/015/T42';
+import T43 from './Components/015/T43';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
                     <T33 showCircle={showCircle} setShowCircle={setShowCircle} dir={true}></T33>
                 </div>
                 <T41 setAddFig={setAddFig}></T41>
+                <T43 setAddFig={setAddFig}></T43>
                 <T42 addFig={addFig}></T42>
             </header>
         </div>

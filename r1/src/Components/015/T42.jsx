@@ -2,7 +2,7 @@ function T42({addFig}) {
 
     return (
         <div className="container">
-        { addFig.map((_, i) => <div className="kv" key={i}></div>) }
+        { addFig.map((c, i) => <div className={c} key={i}></div>) }
         </div>
     )
 }

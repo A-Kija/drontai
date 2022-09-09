@@ -1,7 +1,7 @@
 function T41({setAddFig}) {
 
     return (
-        <button onClick={() => setAddFig(f => [...f, ''])}>Add</button>
+        <button onClick={() => setAddFig(f => [...f, 'kv'])}>Add</button>
     )
 }
 

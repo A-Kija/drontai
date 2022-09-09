@@ -7,11 +7,15 @@ import T22 from './Components/015/T22';
 // import T31 from './Components/015/T31';
 // import T32 from './Components/015/T32';
 import T33 from './Components/015/T33';
+import T41 from './Components/015/T41';
+import T42 from './Components/015/T42';
+
 function App() {
 
     const [add19, setAdd19] = useState(0);
     const [showSq, setShowSq] = useState(false);
-    const [showCircle, setShowCircle] = useState(false)
+    const [showCircle, setShowCircle] = useState(false);
+    const [addFig, setAddFig] = useState([]);
 
     return (
         <div className="App">
@@ -33,6 +37,8 @@ function App() {
                 <div className="container31">
                     <T33 showCircle={showCircle} setShowCircle={setShowCircle} dir={true}></T33>
                 </div>
+                <T41 setAddFig={setAddFig}></T41>
+                <T42 addFig={addFig}></T42>
             </header>
         </div>
     );

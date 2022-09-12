@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { add1, add2, rem1, rem2 } from "../../Actions/count";
+import { add1, add2, add5, rem1, rem2, rem5 } from "../../Actions/count";
 import count from "../../Reducers/count";
 
 function Count() {
@@ -14,6 +14,8 @@ function Count() {
             <button onClick={() => dispachCounter(rem1())}>-1</button>
             <button onClick={() => dispachCounter(add2())}>+2</button>
             <button onClick={() => dispachCounter(rem2())}>-2</button>
+            <button onClick={() => dispachCounter(add5())}>+5</button>
+            <button onClick={() => dispachCounter(rem5())}>-5</button>
         </div>
         </>
     )

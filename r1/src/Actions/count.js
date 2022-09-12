@@ -1,4 +1,4 @@
-import { ADD_ONE, ADD_T, REMOVE_ONE, REMOVE_T } from '../Constants/actions';
+import { ADD_5, ADD_ONE, ADD_T, REMOVE_5, REMOVE_ONE, REMOVE_T } from '../Constants/actions';
 
 export function add1() {
     return {
@@ -21,5 +21,17 @@ export function add2() {
 export function rem2() {
     return {
         type: REMOVE_T
+    }
+}
+
+export function add5() {
+    return {
+        type: ADD_5
+    }
+}
+
+export function rem5() {
+    return {
+        type: REMOVE_5
     }
 }

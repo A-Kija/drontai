@@ -1,4 +1,4 @@
-import { ADD_5, ADD_ONE, ADD_T, FONT_SIZE, RA_CO, REMOVE_5, REMOVE_ONE, REMOVE_T } from '../Constants/actions';
+import { ADD_5, ADD_ONE, ADD_T, BORDER, FONT_SIZE, RA_CO, REMOVE_5, REMOVE_ONE, REMOVE_T } from '../Constants/actions';
 
 export function add1() {
     return {
@@ -45,5 +45,11 @@ export function randC() {
 export function font() {
     return {
         type: FONT_SIZE
+    }
+}
+
+export function border() {
+    return {
+        type: BORDER
     }
 }

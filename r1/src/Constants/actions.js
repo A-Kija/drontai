@@ -7,3 +7,5 @@ export const REMOVE_5 = 6;
 export const RA_CO = 7;
 export const FONT_SIZE = 22;
 export const BORDER = 44;
+export const ADD_SQ = 49;
+export const REM_SQ = 45;

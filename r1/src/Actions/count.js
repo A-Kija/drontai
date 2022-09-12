@@ -1,4 +1,4 @@
-import { ADD_5, ADD_ONE, ADD_T, BORDER, FONT_SIZE, RA_CO, REMOVE_5, REMOVE_ONE, REMOVE_T } from '../Constants/actions';
+import { ADD_5, ADD_ONE, ADD_SQ, ADD_T, BORDER, FONT_SIZE, RA_CO, REMOVE_5, REMOVE_ONE, REMOVE_T, REM_SQ } from '../Constants/actions';
 
 export function add1() {
     return {
@@ -51,5 +51,17 @@ export function font() {
 export function border() {
     return {
         type: BORDER
+    }
+}
+
+export function addSq() {
+    return {
+        type: ADD_SQ
+    }
+}
+
+export function remSq() {
+    return {
+        type: REM_SQ
     }
 }

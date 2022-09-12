@@ -1,13 +1,19 @@
-import { ADD_ONE, REMOVE_ONE } from "../Constants/actions";
+import { ADD_ONE, ADD_T, REMOVE_ONE, REMOVE_T } from "../Constants/actions";
 
 function count(state, action) {
-    let newState = {...state};
-    switch(action.type) {
+    let newState = { ...state };
+    switch (action.type) {
         case ADD_ONE:
-            newState.number ++;
+            newState.number++;
             break;
         case REMOVE_ONE:
-            newState.number --;
+            newState.number--;
+            break;
+        case ADD_T:
+            newState.number += 2;
+            break;
+        case REMOVE_T:
+            newState.number -= 2;
             break;
         default:
     }

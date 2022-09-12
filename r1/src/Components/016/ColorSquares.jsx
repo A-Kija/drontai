@@ -6,8 +6,8 @@ function ColorSquares() {
     const [sq, setSq] = useState([]);
 
     useEffect(() => {
-        const color = randColor();
-        setSq([...Array(10)].map((_, i) => ({ id: i + 1, color })))
+        const c = randColor();
+        setSq([...Array(10)].map((_, i) => ({ id: i + 1, color: c })))
     }, []);
 
     const changeColor = id => {

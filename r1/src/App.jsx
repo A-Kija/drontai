@@ -1,5 +1,5 @@
 import './App.scss';
-import ColorSquares from './Components/016/ColorSquares';
+import Count from './Components/016/Count';
 
 
 function App() {
@@ -7,8 +7,8 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-            <h1>Total Recall 3</h1>
-            <ColorSquares />
+            <h1>UseReducer</h1>
+            <Count />
             </header>
         </div>
     );

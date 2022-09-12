@@ -5,3 +5,4 @@ export const REMOVE_T = 4;
 export const ADD_5= 5;
 export const REMOVE_5 = 6;
 export const RA_CO = 7;
+export const FONT_SIZE = 22;

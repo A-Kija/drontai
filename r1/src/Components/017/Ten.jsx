@@ -11,7 +11,6 @@ function Ten() {
         dispachNumbers(get10());
     }, []);
 
-
     return (
         <>
             <div className="container">

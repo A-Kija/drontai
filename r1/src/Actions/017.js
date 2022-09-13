@@ -1,4 +1,4 @@
-import { ADD_SOME, COLOR_3, COLOR_3_BORDER, COLOR_3_BORDER_STYLE, COLOR_3_SIZE, REM_SOME } from "../Constants/017";
+import { ADD_SOME, COLOR_3, COLOR_3_BORDER, COLOR_3_BORDER_STYLE, COLOR_3_SIZE, GET_TEN, REM_SOME } from "../Constants/017";
 
 export function actionColor3() {
     return {
@@ -37,5 +37,11 @@ export function remSome(what) {
     return {
         type: REM_SOME,
         payload: what
+    }
+}
+
+export function get10() {
+    return {
+        type: GET_TEN,
     }
 }

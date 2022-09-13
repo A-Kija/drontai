@@ -5,3 +5,4 @@ export const COLOR_3_BORDER_STYLE = 'COLOR_3_BORDER_STYLE';
 export const ADD_SOME = 1;
 export const REM_SOME = 2;
 export const GET_TEN = 8;
+export const SORT_TEN = 81;

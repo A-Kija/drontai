@@ -1,4 +1,4 @@
-import { ADD_SOME, COLOR_3, COLOR_3_BORDER, COLOR_3_BORDER_STYLE, COLOR_3_SIZE, GET_TEN, REM_SOME, SORT_TEN } from "../Constants/017";
+import { ADD_SOME, COLOR_3, COLOR_3_BORDER, COLOR_3_BORDER_STYLE, COLOR_3_SIZE, GET_TEN, REM_SOME, SORT_TEN, SORT_TEN_DESC, SORT_TEN_RESET } from "../Constants/017";
 
 export function actionColor3() {
     return {
@@ -49,5 +49,17 @@ export function get10() {
 export function sort10() {
     return {
         type: SORT_TEN,
+    }
+}
+
+export function sort10D() {
+    return {
+        type: SORT_TEN_DESC
+    }
+}
+
+export function sort10R() {
+    return {
+        type: SORT_TEN_RESET
     }
 }

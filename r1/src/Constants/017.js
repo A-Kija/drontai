@@ -6,3 +6,5 @@ export const ADD_SOME = 1;
 export const REM_SOME = 2;
 export const GET_TEN = 8;
 export const SORT_TEN = 81;
+export const SORT_TEN_DESC = 82;
+export const SORT_TEN_RESET = 83;

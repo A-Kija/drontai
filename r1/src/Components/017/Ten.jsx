@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useReducer } from "react";
-import { get10, sort10 } from "../../Actions/017";
+import { get10, sort10, sort10D, sort10R } from "../../Actions/017";
 import ten from "../../Reducers/ten";
 
 function Ten() {
@@ -21,7 +21,9 @@ function Ten() {
             </div>
             <div className="container">
                 <button onClick={() => dispachNumbers(get10())}>reMake</button>
-                <button onClick={() => dispachNumbers(sort10())}>soRt</button>
+                <button onClick={() => dispachNumbers(sort10())}>sort 9-1</button>
+                <button onClick={() => dispachNumbers(sort10D())}>sort 1-9</button>
+                <button onClick={() => dispachNumbers(sort10R())}>sort reset</button>
             </div>
         </>
     );

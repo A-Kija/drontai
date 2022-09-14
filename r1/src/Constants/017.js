@@ -9,3 +9,5 @@ export const SORT_TEN = 81;
 export const SORT_TEN_DESC = 82;
 export const SORT_TEN_RESET = 83;
 export const SORT_TEN_RAND = 88;
+export const SHOW_HIDE = 100;
+export const SHOW_ALL = 200;

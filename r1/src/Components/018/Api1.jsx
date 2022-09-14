@@ -9,14 +9,16 @@ function Api1() {
         axios.get('https://jsonplaceholder.typicode.com/users')
         .then(res => {
             console.log(res);
-            setUsers(res.data);
+            setUsers(res.data.sort((a, b) => a.address.city.localeCompare(b.address.city)));
         })
     }, []);
 
     return (
         <ul>
             {
-                users.map(u => <li key={u.id}>{u.name}</li>)
+                users.map(u => <li key={u.id}>
+                    {u.address.city} {u.company.name} {u.name}
+                </li>)
             }
         </ul>
     )

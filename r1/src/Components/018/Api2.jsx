@@ -15,7 +15,9 @@ function Api2() {
     return (
         <ul>
             {
-                posts.map(p => <li key={p.id}>
+                posts.map(p => <li key={p.id} style={{
+                    color: p.title.length < 20 ? 'crimson' : null
+                }}>
                     {p.title}
                 </li>)
             }

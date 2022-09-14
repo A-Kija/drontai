@@ -1,5 +1,5 @@
 import './App.scss';
-import Api1 from './Components/018/Api1';
+import Api2 from './Components/018/Api2';
 
 function App() {
 
@@ -7,7 +7,7 @@ function App() {
         <div className="App">
             <header className="App-header">
             <h1>API CAll</h1>
-            <Api1></Api1>
+            <Api2></Api2>
             </header>
         </div>
     );

@@ -15,7 +15,8 @@ function Ten() {
         <>
             <div className="container">
                 {
-                    numbers.map((n, i) => <h4 key={i}>{n}</h4>)
+                    numbers.map((n, i) => 
+                    <h4 key={i} style={{borderBottom: n.line ? '2px solid orange' : null}}>{n.number}</h4>)
                 }
             </div>
             <div className="container">

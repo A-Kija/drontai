@@ -7,7 +7,10 @@ function ten(state, action) {
     switch (action.type) {
         case GET_TEN:
             newState = [];
-            [...Array(10)].forEach(() => newState.push(rand(1, 9)));
+            [...Array(10)].forEach(() => {
+                const number = rand(1, 9);
+                newState.push({ number, line: !(number % 2) })
+            });
             break;
         case SORT_TEN:
             newState.sort((a, b) => b - a);

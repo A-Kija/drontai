@@ -8,3 +8,4 @@ export const GET_TEN = 8;
 export const SORT_TEN = 81;
 export const SORT_TEN_DESC = 82;
 export const SORT_TEN_RESET = 83;
+export const SORT_TEN_RAND = 88;

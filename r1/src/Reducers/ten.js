@@ -1,4 +1,4 @@
-import { GET_TEN, SORT_TEN, SORT_TEN_DESC, SORT_TEN_RESET } from "../Constants/017";
+import { GET_TEN, SORT_TEN, SORT_TEN_DESC, SORT_TEN_RAND, SORT_TEN_RESET } from "../Constants/017";
 import rand from '../Functions/rand';
 
 function ten(state, action) {
@@ -20,6 +20,9 @@ function ten(state, action) {
             break;
         case SORT_TEN_RESET:
             newState.sort((a, b) => a.row - b.row);
+            break;
+        case SORT_TEN_RAND:
+            newState.sort(() => rand(0, 1) ? -1 : 1);
             break;
         default:
     }

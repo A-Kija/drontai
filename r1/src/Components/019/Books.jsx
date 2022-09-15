@@ -1,37 +1,46 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Books()  {
+function Books() {
 
     const [books, setBooks] = useState(null);
     const [types, setTypes] = useState(null);
+    const [cart, setCart] = useState([]);
 
-    useEffect( () => {
+    useEffect(() => {
         axios.get('https://in3.dev/knygos/')
-        .then(res => setBooks(res.data));
+            .then(res => setBooks(res.data));
     }, []);
 
-    useEffect( () => {
+    useEffect(() => {
         axios.get('https://in3.dev/knygos/types/')
-        .then(res => setTypes(res.data));
+            .then(res => setTypes(res.data));
     }, []);
 
     const buy = id => {
-        console.log(id);
+        const product = cart.find(b => b.id === id);
+        if (product) {
+            setCart(cart.map(p => p.id === id ? { ...p, count: p.count + 1 } : { ...p }));
+        } else {
+            setCart(c => [...c, { id, price: books.find(b => b.id === id).price, count: 1 }]);
+        }
     }
 
     if (null === books) {
         return (
-        <div className="loader-bin">
-            <div className="lds-ripple"><div></div><div></div></div>
-        </div>
+            <div className="loader-bin">
+                <div className="lds-ripple"><div></div><div></div></div>
+            </div>
         );
     }
 
     return (
         <div className="books">
             <div className="cart">
+                <span>{cart.length}</span>
                 <svg><use xlinkHref="#cart"></use></svg>
+                <strong>{(cart.reduce((pre, cur) => pre + cur.price * cur.count, 0).toFixed(2))}</strong>
+                 
             </div>
             {
                 books?.map(b => <div className="book" key={b.id}>
@@ -42,7 +51,7 @@ function Books()  {
                     <div className="price">
                         <span>{b.price.toFixed(2)} eur</span>
                         <button onClick={() => buy(b.id)}>Pirkti</button>
-                        </div>
+                    </div>
                 </div>)
             }
         </div>

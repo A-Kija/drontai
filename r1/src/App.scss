@@ -348,7 +348,7 @@ button {
     }
     .cart {
         position: absolute;
-        right: 60px;
+        right: 80px;
         top: -30px;
         svg {
             width: 50px;
@@ -358,6 +358,16 @@ button {
             &:hover {
                 fill: darkmagenta;
             }
+        }
+        span {
+            position: absolute;
+            bottom: 10px;
+            left: -40px;
+        }
+        strong {
+            position: absolute;
+            bottom: 10px;
+            font-size: 80%;
         }
     }
 }

@@ -16,6 +16,10 @@ function Books()  {
         .then(res => setTypes(res.data));
     }, []);
 
+    const buy = id => {
+        console.log(id);
+    }
+
     if (null === books) {
         return (
         <div className="loader-bin">
@@ -26,13 +30,19 @@ function Books()  {
 
     return (
         <div className="books">
+            <div className="cart">
+                <svg><use xlinkHref="#cart"></use></svg>
+            </div>
             {
                 books?.map(b => <div className="book" key={b.id}>
                     <div className="types">{types?.find(t => b.id === t.id).title}</div>
                     <h2>{b.title}</h2>
                     <img src={b.img} alt={b.title}></img>
                     <h4>{b.author}</h4>
-                    <div className="price">{b.price.toFixed(2)} eur</div>
+                    <div className="price">
+                        <span>{b.price.toFixed(2)} eur</span>
+                        <button onClick={() => buy(b.id)}>Pirkti</button>
+                        </div>
                 </div>)
             }
         </div>

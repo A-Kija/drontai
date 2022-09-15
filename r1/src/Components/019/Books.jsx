@@ -9,7 +9,7 @@ function Books() {
 
     useEffect(() => {
         axios.get('https://in3.dev/knygos/')
-            .then(res => setBooks(res.data));
+            .then(res => setBooks(res.data.map((b, i) => ({...b, row: i}))));
     }, []);
 
     useEffect(() => {
@@ -35,6 +35,7 @@ function Books() {
     }
 
     return (
+        <>
         <div className="books">
             <div className="cart">
                 <span>{cart.length}</span>
@@ -55,6 +56,10 @@ function Books() {
                 </div>)
             }
         </div>
+        <button onClick={() => setBooks(b => [...b].sort((a, b) => a.price - b.price))}>1-9</button>
+        <button onClick={() => setBooks(b => [...b].sort((a, b) => b.price - a.price))}>9-1</button>
+        <button onClick={() => setBooks(b => [...b].sort((a, b) => a.row - b.row))}>Reset</button>
+        </>
     );
 }
 

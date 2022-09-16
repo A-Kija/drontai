@@ -18,11 +18,19 @@ function Books() {
     const [types, setTypes] = useState(null);
     const [cart, setCart] = useState([]);
     const [select, setSelect] = useState(selectOptions[0].id);
+    const [range, setRange] = useState(0);
+    const [minMax, setMinMax] = useState({min: 0, max: 0});
 
 
     useEffect(() => {
         axios.get('https://in3.dev/knygos/')
-            .then(res => dispachBooks(getFromServer(res.data)));
+            .then(res => {
+                dispachBooks(getFromServer(res.data));
+                const min = Math.floor(Math.min(...(res.data.map(o => o.price))));
+                const max = Math.ceil(Math.max(...(res.data.map(o => o.price))));
+                setMinMax({min, max});
+                setRange(min);
+            });
     }, []);
 
     useEffect(() => {
@@ -59,7 +67,6 @@ function Books() {
         );
     }
 
-    console.log(books);
 
     return (
         <>
@@ -78,6 +85,10 @@ function Books() {
                             }
                         </select>
                     </div>
+                </div>
+                <div className="left1">
+                <input type="range" min={minMax.min} max={minMax.max} value={range} onChange={e => setRange(e.target.value)}></input>
+                <span>{range}</span>
                 </div>
                 {
                     books?.map(b => <div className="book" key={b.id}>

@@ -26,8 +26,16 @@ function Books() {
     }, []);
 
     useEffect(() => {
-        axios.get('https://in3.dev/knygos/types/')
-            .then(res => setTypes(res.data));
+        const type = localStorage.getItem('booksTypes');
+        if (type !== null) {
+            setTypes(JSON.parse(type));
+        } else {
+            axios.get('https://in3.dev/knygos/types/')
+            .then(res => {
+                setTypes(res.data)
+                localStorage.setItem('booksTypes', JSON.stringify(res.data));
+            });
+        }
     }, []);
 
     useEffect(() => {

@@ -1,11 +1,21 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const selectOptions = [
+    {id: 1, text: 'Default'},
+    {id: 2, text: 'By Price 1-9'},
+    {id: 3, text: 'By Price 9-1'},
+    {id: 4, text: 'By Title A-Z'},
+    {id: 5, text: 'By Title Z-A'}
+]
+
 function Books() {
 
     const [books, setBooks] = useState(null);
     const [types, setTypes] = useState(null);
     const [cart, setCart] = useState([]);
+    const [select, setSelect] = useState(selectOptions[0].id);
+
 
     useEffect(() => {
         axios.get('https://in3.dev/knygos/')
@@ -41,7 +51,16 @@ function Books() {
                 <span>{cart.length}</span>
                 <svg><use xlinkHref="#cart"></use></svg>
                 <strong>{(cart.reduce((pre, cur) => pre + cur.price * cur.count, 0).toFixed(2))}</strong>
-                 
+            </div>
+            <div className="left">
+                <div className='sort'>
+                    <span>SORT:</span>
+                    <select value={select} onChange={e => setSelect(e.target.value)}>
+                    {
+                        selectOptions.map(s => <option key={s.id} value={s.id}>{s.text}</option>)
+                    }
+                    </select>
+                </div>
             </div>
             {
                 books?.map(b => <div className="book" key={b.id}>

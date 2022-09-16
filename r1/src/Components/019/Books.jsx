@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useReducer } from 'react';
+import booksReducer from '../../Reducers/booksReducer';
+import { getFromServer } from '../../Actions/books';
 
 const selectOptions = [
     {id: 1, text: 'Default'},
@@ -11,7 +14,7 @@ const selectOptions = [
 
 function Books() {
 
-    const [books, setBooks] = useState(null);
+    const [books, dispachBooks] = useReducer(booksReducer, null);
     const [types, setTypes] = useState(null);
     const [cart, setCart] = useState([]);
     const [select, setSelect] = useState(selectOptions[0].id);
@@ -19,7 +22,7 @@ function Books() {
 
     useEffect(() => {
         axios.get('https://in3.dev/knygos/')
-            .then(res => setBooks(res.data.map((b, i) => ({...b, row: i}))));
+            .then(res => dispachBooks(getFromServer(res.data)));
     }, []);
 
     useEffect(() => {
@@ -75,9 +78,7 @@ function Books() {
                 </div>)
             }
         </div>
-        <button onClick={() => setBooks(b => [...b].sort((a, b) => a.price - b.price))}>1-9</button>
-        <button onClick={() => setBooks(b => [...b].sort((a, b) => b.price - a.price))}>9-1</button>
-        <button onClick={() => setBooks(b => [...b].sort((a, b) => a.row - b.row))}>Reset</button>
+        
         </>
     );
 }

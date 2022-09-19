@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useReducer } from 'react';
 import booksReducer from '../../Reducers/booksReducer';
-import { getFromServer, sortBooks } from '../../Actions/books';
+import { filterBooks, getFromServer, sortBooks } from '../../Actions/books';
 
 const selectOptions = [
     { id: 1, text: 'Default' },
@@ -18,9 +18,15 @@ function Books() {
     const [types, setTypes] = useState(null);
     const [cart, setCart] = useState([]);
     const [select, setSelect] = useState(selectOptions[0].id);
-    const [range, setRange] = useState(0);
+    const [range, setRange] = useState(null);
     const [minMax, setMinMax] = useState({min: 0, max: 0});
 
+    useEffect(() => {
+        if (null === range) {
+            return;
+        }
+        dispachBooks(filterBooks(range));
+    }, [range]);
 
     useEffect(() => {
         axios.get('https://in3.dev/knygos/')
@@ -29,7 +35,7 @@ function Books() {
                 const min = Math.floor(Math.min(...(res.data.map(o => o.price))));
                 const max = Math.ceil(Math.max(...(res.data.map(o => o.price))));
                 setMinMax({min, max});
-                setRange(min);
+                setRange(max);
             });
     }, []);
 
@@ -91,7 +97,7 @@ function Books() {
                 <span>{range}</span>
                 </div>
                 {
-                    books?.map(b => <div className="book" key={b.id}>
+                    books?.map(b => b.show ? <div className="book" key={b.id}>
                         <div className="types">{types?.find(t => b.id === t.id).title}</div>
                         <h2>{b.title}</h2>
                         <img src={b.img} alt={b.title}></img>
@@ -100,7 +106,7 @@ function Books() {
                             <span>{b.price.toFixed(2)} eur</span>
                             <button onClick={() => buy(b.id)}>Pirkti</button>
                         </div>
-                    </div>)
+                    </div> : null)
                 }
             </div>
 

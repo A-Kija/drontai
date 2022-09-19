@@ -213,9 +213,11 @@ button {
 
 .containerBin {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
+    width: 1012px;
+    height: 212px;
     border: 3px dashed skyblue;
     margin: 20px;
     padding: 9px;

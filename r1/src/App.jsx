@@ -9,6 +9,7 @@ function App() {
     const [counter2, setCounter2] = useState(0);
     const [counter3, setCounter3] = useState(0);
     const [counter4, setCounter4] = useState([rand(10, 99), rand(10, 99)]);
+    const [counter5, setCounter5] = useState(0);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -41,6 +42,7 @@ function App() {
         const intervalId = setInterval(() => {
             const d = [rand(10, 99), rand(10, 99)];
             setCounter4(d);
+            setCounter5(c => c + 1);
             if (d[0] === d[1]) {
                 clearInterval(intervalId);
             }
@@ -56,7 +58,7 @@ function App() {
             <header className="App-header">
             <h2>{counter}</h2>
             <h2>{counter2}</h2>
-            <h2>{counter4[0]}-{counter4[1]}</h2>
+            <h2>{counter4[0]}-{counter4[1]} {counter5}</h2>
             <div className="containerBin">
                 {
                     [...Array(counter3)].map((_, i) => <div key={i}></div>)

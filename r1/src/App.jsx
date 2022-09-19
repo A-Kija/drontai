@@ -10,6 +10,7 @@ function App() {
     const [counter3, setCounter3] = useState(0);
     const [counter4, setCounter4] = useState([rand(10, 99), rand(10, 99)]);
     const [counter5, setCounter5] = useState(0);
+    const [color, setColor] = useState('skyblue');
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -51,6 +52,12 @@ function App() {
             clearInterval(intervalId);
         }
     }, []);
+
+    const changeColor = () => {
+        setTimeout(() => {
+            setColor('crimson')
+        }, 1000);
+    }
     
            
     return (
@@ -59,6 +66,9 @@ function App() {
             <h2>{counter}</h2>
             <h2>{counter2}</h2>
             <h2>{counter4[0]}-{counter4[1]} {counter5}</h2>
+            <div className="containerBin">
+                <div style={{backgroundColor:color}} onClick={changeColor}></div>
+            </div>
             <div className="containerBin">
                 {
                     [...Array(counter3)].map((_, i) => <div key={i}></div>)

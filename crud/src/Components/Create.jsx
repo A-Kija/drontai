@@ -8,7 +8,7 @@ function Create() {
     const [color, setColor] = useState('#000000');
     const [cs, setCs] = useState(false);
 
-    const { setCreateData } = useContext(DataContext);
+    const { setCreateData, textures } = useContext(DataContext);
 
     const add = () => {
         setCreateData({
@@ -40,6 +40,17 @@ function Create() {
                     <label htmlFor="sc">Circle or Square</label>
                     <div className="c"></div>
                     <div className="s"></div>
+                </div>
+                <div className="form">
+                    <label>Texture</label>
+                    <div className="cb-line">
+                        {
+                            textures.map(t => <span key={t.id}>
+                                <input id={'_' + t.id} type="checkbox"></input>
+                                <label htmlFor={'_' + t.id}>{t.title}</label>
+                            </span>)
+                        }
+                    </div>
                 </div>
                 <div className="form">
                     <button className="blue" onClick={add}>Make Thing</button>

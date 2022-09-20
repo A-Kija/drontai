@@ -12,6 +12,13 @@ import rand from './Functions/rand';
 
 const key = 'things_shelf';
 
+const textures = [
+  {id: 1, title: 'Wood'},
+  {id: 2, title: 'Metal'},
+  {id: 3, title: 'Paper'},
+  {id: 4, title: 'Stone'}
+]
+
 function App() {
 
 
@@ -97,6 +104,7 @@ function App() {
 
   return (
     <DataContext.Provider value={{
+      textures,
       setCreateData,
       things,
       setDeleteData,

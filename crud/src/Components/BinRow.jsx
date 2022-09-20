@@ -9,10 +9,6 @@ function BinRow({ thing }) {
         <div className="row">
             <div className="content">
                 <h2>{thing.thing}</h2>
-                <div className="color" style={{
-                    backgroundColor: thing.color,
-                    borderRadius: thing.cs ? '50%' : null
-                }}></div>
             </div>
             <div className="buttons">
                 <button className="red" onClick={() => setDestroyData({id: thing.id})}>Remove</button>

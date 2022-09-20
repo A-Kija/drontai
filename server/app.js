@@ -23,6 +23,17 @@ app.get('/', (req, res) => {
   res.send('Labas, Briedi!');
 });
 
+app.get("/labas", (req, res) => {
+    const sql = `
+    SELECT *
+    FROM things
+    `;
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
 app.listen(port, () => {
   console.log(`Bebras klauso ${port} porto`);
 });

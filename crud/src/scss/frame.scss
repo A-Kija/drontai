@@ -7,12 +7,16 @@
         display: flex;
         width: 100%;
         max-width: 1200px;
+        .mt{
+            margin-top: 20px;
+        }
         .box-1 {
             width: 40%;
             padding: 11px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
+            flex-direction: column;
         }
         .box-2 {
             width: 60%;

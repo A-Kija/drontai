@@ -8,8 +8,9 @@ function Edit() {
     const [thing, setThing] = useState('');
     const [color, setColor] = useState('#000000');
     const [cs, setCs] = useState(false);
+    const [texture, setTexture] = useState(0);
 
-    const { modalData, setModalData, setEditData } = useContext(DataContext);
+    const { modalData, setModalData, setEditData, textures } = useContext(DataContext);
 
     useEffect(() => {
         if(null === modalData) {
@@ -18,6 +19,7 @@ function Edit() {
         setThing(modalData.thing);
         setColor(modalData.color);
         setCs(modalData.cs);
+        setTexture(modalData.texture)
     }, [modalData]);
 
     const save = () => {
@@ -25,6 +27,7 @@ function Edit() {
             thing,
             color,
             cs: cs ? 1 : 0,
+            texture,
             id: modalData.id
         });
         setModalData(null);
@@ -57,6 +60,19 @@ function Edit() {
                             <div className="c"></div>
                             <div className="s"></div>
                         </div>
+                        <div className="form">
+                    <label>Texture</label>
+                    <div className="cb-line">
+                        {
+                            textures.map(t => <span key={t.id}>
+                                <input id={'e_' + t.id} type="checkbox" 
+                                checked={t.id === texture} onChange={() => setTexture(t.id)}>
+                                </input>
+                                <label htmlFor={'e_' + t.id}>{t.title}</label>
+                            </span>)
+                        }
+                    </div>
+                </div>
                         <div className="form row">
                             <button className="blue" onClick={save}>Edit Thing</button>
                             <button className="red" onClick={() => setModalData(null)}>Cancel</button>

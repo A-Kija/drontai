@@ -3,7 +3,7 @@ import DataContext from "./DataContext";
 
 function Row({ thing }) {
 
-    const { setDeleteData, setModalData } = useContext(DataContext);
+    const { setDeleteData, setModalData, textures } = useContext(DataContext);
 
     return (
         <div className="row">
@@ -13,6 +13,7 @@ function Row({ thing }) {
                     backgroundColor: thing.color,
                     borderRadius: thing.cs ? '50%' : null
                 }}></div>
+                <h4>{textures.find(t => t.id === thing.texture)?.title}</h4>
             </div>
             <div className="buttons">
                 <button className="green" onClick={() => setModalData(thing)}>Edit</button>

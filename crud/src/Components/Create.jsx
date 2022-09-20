@@ -49,10 +49,10 @@ function Create() {
                     <div className="cb-line">
                         {
                             textures.map(t => <span key={t.id}>
-                                <input id={'_' + t.id} type="checkbox" 
+                                <input id={'c_' + t.id} type="checkbox" 
                                 checked={t.id === texture} onChange={() => setTexture(t.id)}>
                                 </input>
-                                <label htmlFor={'_' + t.id}>{t.title}</label>
+                                <label htmlFor={'c_' + t.id}>{t.title}</label>
                             </span>)
                         }
                     </div>

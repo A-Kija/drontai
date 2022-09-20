@@ -7,6 +7,7 @@ function Create() {
     const [thing, setThing] = useState('');
     const [color, setColor] = useState('#000000');
     const [cs, setCs] = useState(false);
+    const [texture, setTexture] = useState(0);
 
     const { setCreateData, textures } = useContext(DataContext);
 
@@ -14,11 +15,13 @@ function Create() {
         setCreateData({
             thing,
             color,
-            cs: cs ? 1 : 0
+            cs: cs ? 1 : 0,
+            texture
         });
         setThing('');
         setColor('#000000')
         setCs(false);
+        setTexture(0);
     }
 
     return (
@@ -46,7 +49,9 @@ function Create() {
                     <div className="cb-line">
                         {
                             textures.map(t => <span key={t.id}>
-                                <input id={'_' + t.id} type="checkbox"></input>
+                                <input id={'_' + t.id} type="checkbox" 
+                                checked={t.id === texture} onChange={() => setTexture(t.id)}>
+                                </input>
                                 <label htmlFor={'_' + t.id}>{t.title}</label>
                             </span>)
                         }

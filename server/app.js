@@ -16,7 +16,7 @@ const con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "ruo_nei_ka",
+    database: "things",
 });
 
 app.get('/', (req, res) => {

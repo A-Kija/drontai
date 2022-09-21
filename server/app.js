@@ -43,7 +43,7 @@ app.post("/api", (req, res) => {
     `;
     con.query(sql, [req.body.thing, req.body.color, req.body.cs, req.body.texture], (err, result) => {
         if (err) throw err;
-        res.send(result);
+        res.send({msg: {text: 'Oh, we have new thing!', type: 'success'}});
     });
 });
 // SOFT DELETE
@@ -55,7 +55,7 @@ app.delete("/api/soft/:id", (req, res) => {
     `;
     con.query(sql, [req.params.id], (err, result) => {
         if (err) throw err;
-        res.send(result);
+        res.send({msg: {text: 'Oh, we put thing in the BIN!', type: 'success'}});
     });
 });
 // UNDO DELETE
@@ -67,7 +67,7 @@ app.delete("/api/undo/:id", (req, res) => {
     `;
     con.query(sql, [req.params.id], (err, result) => {
         if (err) throw err;
-        res.send(result);
+        res.send({msg: {text: 'Oh, we have thing again!', type: 'success'}});
     });
 });
 // HARD DELETE
@@ -78,7 +78,7 @@ app.delete("/api/:id", (req, res) => {
     `;
     con.query(sql, [req.params.id], (err, result) => {
         if (err) throw err;
-        res.send(result);
+        res.send({msg: {text: 'Oh, the thing is dead!', type: 'info'}});
     });
 });
 // EDIT
@@ -90,7 +90,7 @@ app.put("/api/:id", (req, res) => {
     `;
     con.query(sql, [req.body.thing, req.body.color, req.body.cs, req.body.texture, req.params.id], (err, result) => {
         if (err) throw err;
-        res.send(result);
+        res.send({msg: {text: 'Oh, we have edited this thing!', type: 'success'}});
     });
 });
 

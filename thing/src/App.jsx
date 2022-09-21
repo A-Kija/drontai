@@ -1,11 +1,13 @@
 import './App.scss';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 import { useState, useEffect } from 'react';
+import DataContext from './Components/DataContext';
 import List from './Components/List';
 import Create from './Components/Create';
 import Bin from './Components/Bin';
-import DataContext from './Components/DataContext';
 import Edit from './Components/Edit';
+import Msg from './Components/Msg';
 
 const textures = [
   { id: 1, title: 'Wood' },
@@ -24,6 +26,7 @@ function App() {
   const [undoDeleteData, setUndoDeleteData] = useState(null);
   const [modalData, setModalData] = useState(null);
   const [editData, setEditData] = useState(null);
+  const [msgs, setMsgs] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:3003/api')
@@ -40,6 +43,7 @@ function App() {
     axios.post('http://localhost:3003/api', createData)
       .then(res => {
         setLastUpdate(Date.now());
+        createMsg(res.data.msg.text, res.data.msg.type);
       })
   }, [createData]);
 
@@ -51,6 +55,7 @@ function App() {
     axios.delete('http://localhost:3003/api/soft/' + binData.id)
       .then(res => {
         setLastUpdate(Date.now());
+        createMsg(res.data.msg.text, res.data.msg.type);
       })
   }, [binData]);
 
@@ -62,6 +67,7 @@ function App() {
     axios.delete('http://localhost:3003/api/' + deleteData.id)
       .then(res => {
         setLastUpdate(Date.now());
+        createMsg(res.data.msg.text, res.data.msg.type);
       })
   }, [deleteData]);
 
@@ -73,10 +79,11 @@ function App() {
     axios.delete('http://localhost:3003/api/undo/' + undoDeleteData.id)
       .then(res => {
         setLastUpdate(Date.now());
+        createMsg(res.data.msg.text, res.data.msg.type);
       })
   }, [undoDeleteData]);
 
-  // UNDO DELETE
+  // EDIT
   useEffect(() => {
     if (null === editData) {
       return;
@@ -84,8 +91,15 @@ function App() {
     axios.put('http://localhost:3003/api/' + editData.id, editData)
       .then(res => {
         setLastUpdate(Date.now());
+        createMsg(res.data.msg.text, res.data.msg.type);
       })
   }, [editData]);
+
+  const createMsg = (text, type = 'info') => {
+      const id = uuidv4();
+      setMsgs(m => [...m, {id, text, type}]);
+      setTimeout(() => setMsgs(m => m.filter(msg => msg.id !== id)), 4000);
+  }
 
   return (
     <DataContext.Provider value={{
@@ -97,7 +111,8 @@ function App() {
       setUndoDeleteData,
       modalData,
       setModalData,
-      setEditData
+      setEditData,
+      msgs
     }}>
       <div className="container">
         <div className="bin">
@@ -111,6 +126,7 @@ function App() {
         </div>
       </div>
       <Edit />
+      <Msg />
     </DataContext.Provider>
   );
 }

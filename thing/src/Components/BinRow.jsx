@@ -8,7 +8,7 @@ function BinRow({ thing }) {
     return (
         <div className="row">
             <div className="content">
-                <h2>{thing.thing}</h2>
+                <h2>{thing.title}</h2>
             </div>
             <div className="buttons">
                 <button className="red" onClick={() => setDestroyData({id: thing.id})}>Remove</button>

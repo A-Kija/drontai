@@ -4,9 +4,9 @@ import BinRow from "./BinRow";
 
 function Bin() {
 
-    const { deletedThings } = useContext(DataContext);
+    const { things } = useContext(DataContext);
 
-    if (deletedThings?.length === 0) {
+    if (things?.filter(t => t.deleted).length === 0) {
         return (
             <div className="card mt">
                 <div className="top">
@@ -26,7 +26,7 @@ function Bin() {
             </div>
             <div className="body">
                 {
-                    deletedThings?.map(t => <BinRow key={t.id} thing={t} />)
+                    things?.map(t => t.deleted ? <BinRow key={t.id} thing={t} /> : null)
                 }
             </div>
         </div>

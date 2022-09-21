@@ -3,7 +3,7 @@ import DataContext from "./DataContext";
 
 function Row({ thing }) {
 
-    const { setDeleteData, setModalData, textures } = useContext(DataContext);
+    const { setBinData, setModalData, textures } = useContext(DataContext);
 
     return (
         <div className="row">
@@ -17,7 +17,7 @@ function Row({ thing }) {
             </div>
             <div className="buttons">
                 <button className="green" onClick={() => setModalData(thing)}>Edit</button>
-                <button className="red" onClick={() => setDeleteData({id: thing.id})}>Delete</button>
+                <button className="red" onClick={() => setBinData({id: thing.id})}>Delete</button>
             </div>
         </div>
     )

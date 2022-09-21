@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import DataContext from "./DataContext.jsx";
-import MainContext from "../MainContext.jsx";
+import DataContext from "./DataContext";
+import MainContext from "../MainContext";
 
 function Edit() {
 

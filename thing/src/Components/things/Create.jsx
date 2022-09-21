@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useState } from "react";
-import MainContext from "../MainContext.jsx";
-import DataContext from "./DataContext.jsx";
+import MainContext from "../MainContext";
+import DataContext from "./DataContext";
 
 function Create() {
 

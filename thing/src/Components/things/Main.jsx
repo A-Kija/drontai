@@ -47,7 +47,7 @@ function Main() {
         setLastUpdate(Date.now());
         createMsg(res.data.msg.text, res.data.msg.type);
       })
-  }, [createData]);
+  }, [createData, createMsg]);
 
   // SOFT DELETE
   useEffect(() => {
@@ -59,7 +59,7 @@ function Main() {
         setLastUpdate(Date.now());
         createMsg(res.data.msg.text, res.data.msg.type);
       })
-  }, [binData]);
+  }, [binData, createMsg]);
 
   // HARD DELETE
   useEffect(() => {
@@ -71,7 +71,7 @@ function Main() {
         setLastUpdate(Date.now());
         createMsg(res.data.msg.text, res.data.msg.type);
       })
-  }, [deleteData]);
+  }, [deleteData, createMsg]);
 
   // UNDO DELETE
   useEffect(() => {
@@ -83,7 +83,7 @@ function Main() {
         setLastUpdate(Date.now());
         createMsg(res.data.msg.text, res.data.msg.type);
       })
-  }, [undoDeleteData]);
+  }, [undoDeleteData, createMsg]);
 
   // EDIT
   useEffect(() => {
@@ -95,7 +95,7 @@ function Main() {
         setLastUpdate(Date.now());
         createMsg(res.data.msg.text, res.data.msg.type);
       })
-  }, [editData]);
+  }, [editData, createMsg]);
 
 
   return (
@@ -109,6 +109,7 @@ function Main() {
       modalData,
       setModalData,
       setEditData,
+
     }}>
       <div className="container">
         <div className="bin">

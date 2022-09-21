@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import DataContext from "./DataContext.jsx";
+import MainContext from "../MainContext.jsx";
 
 function Edit() {
 
@@ -10,7 +11,8 @@ function Edit() {
     const [cs, setCs] = useState(false);
     const [texture, setTexture] = useState(0);
 
-    const { modalData, setModalData, setEditData, textures, createMsg } = useContext(DataContext);
+    const { modalData, setModalData, setEditData, textures } = useContext(DataContext);
+    const { createMsg } = useContext(MainContext);
 
     useEffect(() => {
         if (null === modalData) {

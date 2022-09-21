@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useState } from "react";
+import MainContext from "../MainContext.jsx";
 import DataContext from "./DataContext.jsx";
 
 function Create() {
@@ -9,7 +10,8 @@ function Create() {
     const [cs, setCs] = useState(false);
     const [texture, setTexture] = useState(0);
 
-    const { setCreateData, textures, createMsg } = useContext(DataContext);
+    const { setCreateData, textures } = useContext(DataContext);
+    const { createMsg } = useContext(MainContext);
 
     const add = () => {
         //Validation
@@ -59,8 +61,8 @@ function Create() {
                     <div className="cb-line">
                         {
                             textures.map(t => <span key={t.id}>
-                                <input id={'c_' + t.id} type="checkbox" 
-                                checked={t.id === texture} onChange={() => setTexture(t.id)}>
+                                <input id={'c_' + t.id} type="checkbox"
+                                    checked={t.id === texture} onChange={() => setTexture(t.id)}>
                                 </input>
                                 <label htmlFor={'c_' + t.id}>{t.title}</label>
                             </span>)

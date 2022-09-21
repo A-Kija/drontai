@@ -1,9 +1,9 @@
 import { useContext } from "react"
-import DataContext from "./DataContext"
+import MainContext from "./MainContext"
 
 function Msg() {
 
-    const { msgs } = useContext(DataContext);
+    const { msgs } = useContext(MainContext);
 
     if (msgs.length === 0) {
         return null;

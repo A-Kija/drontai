@@ -58,6 +58,29 @@ app.delete("/api/soft/:id", (req, res) => {
     });
 });
 
+app.delete("/api/undo/:id", (req, res) => {
+    const sql = `
+    UPDATE things
+    SET deleted = 0
+    WHERE id = ?
+    `;
+    con.query(sql, [req.params.id], (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.delete("/api/:id", (req, res) => {
+    const sql = `
+    DELETE FROM things
+    WHERE id = ?
+    `;
+    con.query(sql, [req.params.id], (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
 
 
 app.listen(port, () => {

@@ -19,6 +19,8 @@ function App() {
   const [things, setThings] = useState(null);
   const [createData, setCreateData] = useState(null);
   const [binData, setBinData] = useState(null);
+  const [deleteData, setDeleteData] = useState(null);
+  const [undoDeleteData, setUndoDeleteData] = useState(null);
 
   useEffect(() => {
     axios.get('http://localhost:3003/api')
@@ -49,13 +51,36 @@ function App() {
       })
   }, [binData]);
 
+  // HARD DELETE
+  useEffect(() => {
+    if (null === deleteData) {
+      return;
+    }
+    axios.delete('http://localhost:3003/api/' + deleteData.id)
+      .then(res => {
+        setLastUpdate(Date.now());
+      })
+  }, [deleteData]);
+
+    // UNDO DELETE
+    useEffect(() => {
+      if (null === undoDeleteData) {
+        return;
+      }
+      axios.delete('http://localhost:3003/api/undo/' + undoDeleteData.id)
+        .then(res => {
+          setLastUpdate(Date.now());
+        })
+    }, [undoDeleteData]);
 
   return (
     <DataContext.Provider value={{
       things,
       textures,
       setCreateData,
-      setBinData
+      setBinData,
+      setDeleteData,
+      setUndoDeleteData
     }}>
       <div className="container">
         <div className="bin">

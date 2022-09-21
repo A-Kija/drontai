@@ -3,7 +3,7 @@ import DataContext from "./DataContext";
 
 function BinRow({ thing }) {
 
-    const { setRestoreData, setDestroyData } = useContext(DataContext);
+    const { setUndoDeleteData, setDeleteData } = useContext(DataContext);
 
     return (
         <div className="row">
@@ -11,8 +11,8 @@ function BinRow({ thing }) {
                 <h2>{thing.title}</h2>
             </div>
             <div className="buttons">
-                <button className="red" onClick={() => setDestroyData({id: thing.id})}>Remove</button>
-                <button className="blue" onClick={() => setRestoreData({id: thing.id})}>Restore</button>
+                <button className="red" onClick={() => setDeleteData({id: thing.id})}>Remove</button>
+                <button className="blue" onClick={() => setUndoDeleteData({id: thing.id})}>Restore</button>
             </div>
         </div>
     )

@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
   res.send('Labas, Briedi!');
 });
 
+// READ ALL
 app.get("/api", (req, res) => {
     const sql = `
     SELECT *
@@ -33,7 +34,7 @@ app.get("/api", (req, res) => {
         res.send(result);
     });
 });
-
+// CREATE NEW
 app.post("/api", (req, res) => {
     const sql = `
     INSERT INTO things
@@ -45,7 +46,7 @@ app.post("/api", (req, res) => {
         res.send(result);
     });
 });
-
+// SOFT DELETE
 app.delete("/api/soft/:id", (req, res) => {
     const sql = `
     UPDATE things
@@ -57,7 +58,7 @@ app.delete("/api/soft/:id", (req, res) => {
         res.send(result);
     });
 });
-
+// UNDO DELETE
 app.delete("/api/undo/:id", (req, res) => {
     const sql = `
     UPDATE things
@@ -69,13 +70,25 @@ app.delete("/api/undo/:id", (req, res) => {
         res.send(result);
     });
 });
-
+// HARD DELETE
 app.delete("/api/:id", (req, res) => {
     const sql = `
     DELETE FROM things
     WHERE id = ?
     `;
     con.query(sql, [req.params.id], (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+// EDIT
+app.put("/api/:id", (req, res) => {
+    const sql = `
+    UPDATE things
+    SET title = ?, color = ?, cs = ?, texture = ?
+    WHERE id = ?
+    `;
+    con.query(sql, [req.body.thing, req.body.color, req.body.cs, req.body.texture, req.params.id], (err, result) => {
         if (err) throw err;
         res.send(result);
     });

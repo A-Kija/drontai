@@ -5,6 +5,7 @@ import List from './Components/List';
 import Create from './Components/Create';
 import Bin from './Components/Bin';
 import DataContext from './Components/DataContext';
+import Edit from './Components/Edit';
 
 const textures = [
   { id: 1, title: 'Wood' },
@@ -21,6 +22,8 @@ function App() {
   const [binData, setBinData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
   const [undoDeleteData, setUndoDeleteData] = useState(null);
+  const [modalData, setModalData] = useState(null);
+  const [editData, setEditData] = useState(null);
 
   useEffect(() => {
     axios.get('http://localhost:3003/api')
@@ -62,16 +65,27 @@ function App() {
       })
   }, [deleteData]);
 
-    // UNDO DELETE
-    useEffect(() => {
-      if (null === undoDeleteData) {
-        return;
-      }
-      axios.delete('http://localhost:3003/api/undo/' + undoDeleteData.id)
-        .then(res => {
-          setLastUpdate(Date.now());
-        })
-    }, [undoDeleteData]);
+  // UNDO DELETE
+  useEffect(() => {
+    if (null === undoDeleteData) {
+      return;
+    }
+    axios.delete('http://localhost:3003/api/undo/' + undoDeleteData.id)
+      .then(res => {
+        setLastUpdate(Date.now());
+      })
+  }, [undoDeleteData]);
+
+  // UNDO DELETE
+  useEffect(() => {
+    if (null === editData) {
+      return;
+    }
+    axios.put('http://localhost:3003/api/' + editData.id, editData)
+      .then(res => {
+        setLastUpdate(Date.now());
+      })
+  }, [editData]);
 
   return (
     <DataContext.Provider value={{
@@ -80,7 +94,10 @@ function App() {
       setCreateData,
       setBinData,
       setDeleteData,
-      setUndoDeleteData
+      setUndoDeleteData,
+      modalData,
+      setModalData,
+      setEditData
     }}>
       <div className="container">
         <div className="bin">
@@ -93,6 +110,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Edit />
     </DataContext.Provider>
   );
 }

@@ -16,7 +16,7 @@ function Edit() {
         if(null === modalData) {
             return;
         }
-        setThing(modalData.thing);
+        setThing(modalData.title);
         setColor(modalData.color);
         setCs(modalData.cs);
         setTexture(modalData.texture)

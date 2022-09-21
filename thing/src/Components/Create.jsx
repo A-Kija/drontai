@@ -9,9 +9,19 @@ function Create() {
     const [cs, setCs] = useState(false);
     const [texture, setTexture] = useState(0);
 
-    const { setCreateData, textures } = useContext(DataContext);
+    const { setCreateData, textures, createMsg } = useContext(DataContext);
 
     const add = () => {
+        //Validation
+        if ('' === thing) {
+            createMsg('Oh no, thing title is empty', 'alert');
+            return;
+        }
+        if (0 === texture) {
+            createMsg('Oh no, choose texture', 'alert');
+            return;
+        }
+
         setCreateData({
             thing,
             color,

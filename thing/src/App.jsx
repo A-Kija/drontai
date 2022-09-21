@@ -112,7 +112,8 @@ function App() {
       modalData,
       setModalData,
       setEditData,
-      msgs
+      msgs,
+      createMsg
     }}>
       <div className="container">
         <div className="bin">

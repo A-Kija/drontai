@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
   res.send('Labas, Briedi!');
 });
 
-app.get("/labas", (req, res) => {
+app.get("/api", (req, res) => {
     const sql = `
     SELECT *
     FROM things
@@ -33,6 +33,20 @@ app.get("/labas", (req, res) => {
         res.send(result);
     });
 });
+
+app.post("/api", (req, res) => {
+    const sql = `
+    INSERT INTO things
+    (title, color, cs, texture)
+    VALUES (?, ?, ?, ?)
+    `;
+    con.query(sql, [req.body.thing, req.body.color, req.body.cs, req.body.texture], (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+
 
 app.listen(port, () => {
   console.log(`Bebras klauso ${port} porto`);

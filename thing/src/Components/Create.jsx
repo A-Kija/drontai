@@ -62,7 +62,7 @@ function Create() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Create;

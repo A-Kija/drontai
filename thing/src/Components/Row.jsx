@@ -8,7 +8,7 @@ function Row({ thing }) {
     return (
         <div className="row">
             <div className="content">
-                <h2>{thing.thing}</h2>
+                <h2>{thing.title}</h2>
                 <div className="color" style={{
                     backgroundColor: thing.color,
                     borderRadius: thing.cs ? '50%' : null

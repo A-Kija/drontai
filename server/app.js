@@ -26,8 +26,11 @@ app.get('/', (req, res) => {
 // READ ALL
 app.get("/api", (req, res) => {
     const sql = `
-    SELECT *
-    FROM things
+    SELECT t.*
+    FROM things AS t
+    INNER JOIN owners AS o
+    ON t.owner_id = o.id
+    WHERE o.deleted = 0
     `;
     con.query(sql, (err, result) => {
         if (err) throw err;

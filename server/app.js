@@ -81,6 +81,20 @@ app.delete("/api/soft/:id", (req, res) => {
         res.send({msg: {text: 'Oh, we put thing in the BIN!', type: 'success'}});
     });
 });
+app.delete("/api2/soft/:id", (req, res) => {
+    const sql = `
+    UPDATE owners
+    SET deleted = 1
+    WHERE id = ?
+    `;
+    con.query(sql, [req.params.id], (err, result) => {
+        if (err) throw err;
+        res.send({msg: {text: 'Oh, we put owner in the BIN!', type: 'success'}});
+    });
+});
+
+
+
 // UNDO DELETE
 app.delete("/api/undo/:id", (req, res) => {
     const sql = `

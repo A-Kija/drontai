@@ -48,7 +48,7 @@ function Main() {
     if (null === binData) {
       return;
     }
-    axios.delete('http://localhost:3003/api/soft/' + binData.id)
+    axios.delete('http://localhost:3003/api2/soft/' + binData.id)
       .then(res => {
         setLastUpdate(Date.now());
         createMsg(res.data.msg.text, res.data.msg.type);

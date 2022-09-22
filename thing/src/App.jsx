@@ -4,8 +4,9 @@ import { useState } from 'react';
 import MainContext from './Components/MainContext';
 import Main from './Components/things/Main';
 import { useCallback } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Nav from './Components/Nav';
+import Home from './Components/Home';
 
 
 function App() {
@@ -25,7 +26,12 @@ function App() {
         msgs
       }}>
         <Nav />
-        <Main />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/things" element={<Main />} />
+          <Route path="/owners" />
+        </Routes>
+
       </MainContext.Provider>
     </BrowserRouter>
   );

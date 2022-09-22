@@ -160,6 +160,17 @@ app.put("/api/:id", (req, res) => {
         res.send({msg: {text: 'Oh, we have edited this thing!', type: 'success'}});
     });
 });
+app.put("/api2/:id", (req, res) => {
+    const sql = `
+    UPDATE owners
+    SET name = ?
+    WHERE id = ?
+    `;
+    con.query(sql, [req.body.name, req.params.id], (err, result) => {
+        if (err) throw err;
+        res.send({msg: {text: 'Oh, we have edited this owner!', type: 'success'}});
+    });
+});
 
 
 

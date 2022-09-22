@@ -6,35 +6,26 @@ import MainContext from "../MainContext";
 
 function Edit() {
 
-    const [thing, setThing] = useState('');
-    const [color, setColor] = useState('#000000');
-    const [cs, setCs] = useState(false);
-    const [texture, setTexture] = useState(0);
+    const [name, setName] = useState('');
 
-    const { modalData, setModalData, setEditData, textures } = useContext(DataContext);
+    const { modalData, setModalData, setEditData } = useContext(DataContext);
     const { createMsg } = useContext(MainContext);
 
     useEffect(() => {
         if (null === modalData) {
             return;
         }
-        setThing(modalData.title);
-        setColor(modalData.color);
-        setCs(modalData.cs);
-        setTexture(modalData.texture)
+        setName(modalData.name);
     }, [modalData]);
 
     const save = () => {
         //Validation
-        if ('' === thing) {
-            createMsg('Oh no, thing title is empty', 'alert');
+        if ('' === name) {
+            createMsg('Oh no, owner has no name', 'alert');
             return;
         }
         setEditData({
-            thing,
-            color,
-            cs: cs ? 1 : 0,
-            texture,
+            name,
             id: modalData.id
         });
         setModalData(null);
@@ -49,39 +40,16 @@ function Edit() {
             <div className="modal-bin">
                 <div className="card">
                     <div className="top">
-                        Edit This Thing
+                        Edit This Owner
                         <span className="close" onClick={() => setModalData(null)}>X</span>
                     </div>
                     <div className="body">
                         <div className="form">
-                            <label>Thing</label>
-                            <input type="text" value={thing} onChange={e => setThing(e.target.value)}></input>
-                        </div>
-                        <div className="form">
-                            <label>Color</label>
-                            <input type="color" value={color} onChange={e => setColor(e.target.value)}></input>
-                        </div>
-                        <div className="form">
-                            <input type="checkbox" id="sce" checked={cs} onChange={() => setCs(c => !c)}></input>
-                            <label htmlFor="sce">Circle or Square</label>
-                            <div className="c"></div>
-                            <div className="s"></div>
-                        </div>
-                        <div className="form">
-                            <label>Texture</label>
-                            <div className="cb-line">
-                                {
-                                    textures.map(t => <span key={t.id}>
-                                        <input id={'e_' + t.id} type="checkbox"
-                                            checked={t.id === texture} onChange={() => setTexture(t.id)}>
-                                        </input>
-                                        <label htmlFor={'e_' + t.id}>{t.title}</label>
-                                    </span>)
-                                }
-                            </div>
+                            <label>Name</label>
+                            <input type="text" value={name} onChange={e => setName(e.target.value)}></input>
                         </div>
                         <div className="form row">
-                            <button className="blue" onClick={save}>Edit Thing</button>
+                            <button className="blue" onClick={save}>Edit Owner</button>
                             <button className="red" onClick={() => setModalData(null)}>Cancel</button>
                         </div>
                     </div>

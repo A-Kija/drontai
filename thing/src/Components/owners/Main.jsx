@@ -84,7 +84,7 @@ function Main() {
     if (null === editData) {
       return;
     }
-    axios.put('http://localhost:3003/api/' + editData.id, editData)
+    axios.put('http://localhost:3003/api2/' + editData.id, editData)
       .then(res => {
         setLastUpdate(Date.now());
         createMsg(res.data.msg.text, res.data.msg.type);
@@ -101,8 +101,7 @@ function Main() {
       setUndoDeleteData,
       modalData,
       setModalData,
-      setEditData,
-
+      setEditData
     }}>
       <div className="container">
         <div className="bin">

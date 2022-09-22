@@ -135,6 +135,19 @@ app.delete("/api/:id", (req, res) => {
         res.send({msg: {text: 'Oh, the thing is dead!', type: 'info'}});
     });
 });
+app.delete("/api2/:id", (req, res) => {
+    const sql = `
+    DELETE FROM owners
+    WHERE id = ?
+    `;
+    con.query(sql, [req.params.id], (err, result) => {
+        if (err) throw err;
+        res.send({msg: {text: 'Oh, the owner is dead!', type: 'info'}});
+    });
+});
+
+
+
 // EDIT
 app.put("/api/:id", (req, res) => {
     const sql = `

@@ -60,7 +60,7 @@ function Main() {
     if (null === deleteData) {
       return;
     }
-    axios.delete('http://localhost:3003/api/' + deleteData.id)
+    axios.delete('http://localhost:3003/api2/' + deleteData.id)
       .then(res => {
         setLastUpdate(Date.now());
         createMsg(res.data.msg.text, res.data.msg.type);

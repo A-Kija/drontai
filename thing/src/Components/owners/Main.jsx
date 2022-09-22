@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import DataContext from './DataContext';
-// import List from './List';
+import List from './List';
 import Create from './Create';
 // import Bin from './Bin';
 import Edit from './Edit';
@@ -13,7 +13,7 @@ import MainContext from '../MainContext';
 function Main() {
 
   const [lastUpdate, setLastUpdate] = useState(Date.now())
-  const [things, setThings] = useState(null);
+  const [owners, setOwners] = useState(null);
   const [createData, setCreateData] = useState(null);
   const [binData, setBinData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
@@ -23,11 +23,11 @@ function Main() {
 
   const { createMsg } = useContext(MainContext);
 
-
+  // READ ALL
   useEffect(() => {
-    axios.get('http://localhost:3003/api')
+    axios.get('http://localhost:3003/api2')
       .then(res => {
-        setThings(res.data);
+        setOwners(res.data);
       });
   }, [lastUpdate]);
 
@@ -94,7 +94,7 @@ function Main() {
 
   return (
     <DataContext.Provider value={{
-      things,
+      owners,
       setCreateData,
       setBinData,
       setDeleteData,
@@ -111,7 +111,7 @@ function Main() {
             {/* <Bin /> */}
           </div>
           <div className="box-2">
-            {/* <List /> */}
+            <List />
           </div>
         </div>
       </div>

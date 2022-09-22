@@ -34,6 +34,16 @@ app.get("/api", (req, res) => {
         res.send(result);
     });
 });
+app.get("/api2", (req, res) => {
+    const sql = `
+    SELECT *
+    FROM owners
+    `;
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
 // CREATE NEW
 app.post("/api", (req, res) => {
     const sql = `

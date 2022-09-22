@@ -4,13 +4,13 @@ import Row from "./Row";
 
 function List() {
 
-    const { things } = useContext(DataContext);
+    const { owners } = useContext(DataContext);
 
-    if (things?.filter(t => !t.deleted).length === 0) {
+    if (owners?.filter(o => !o.deleted).length === 0) {
         return (
             <div className="card">
                 <div className="top">
-                    List of Things
+                    List of Owners
                 </div>
                 <div className="body">
                     <h3>Empty</h3>
@@ -22,11 +22,11 @@ function List() {
     return (
         <div className="card">
             <div className="top">
-                List of Things
+                List of Owners
             </div>
             <div className="body">
                 {
-                    things?.map(t => t.deleted ? null : <Row key={t.id} thing={t} />)
+                    owners?.map(o => o.deleted ? null : <Row key={o.id} owner={o} />)
                 }
             </div>
         </div>

@@ -72,7 +72,7 @@ function Main() {
     if (null === undoDeleteData) {
       return;
     }
-    axios.delete('http://localhost:3003/api/undo/' + undoDeleteData.id)
+    axios.delete('http://localhost:3003/api2/undo/' + undoDeleteData.id)
       .then(res => {
         setLastUpdate(Date.now());
         createMsg(res.data.msg.text, res.data.msg.type);

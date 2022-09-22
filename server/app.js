@@ -44,6 +44,9 @@ app.get("/api2", (req, res) => {
         res.send(result);
     });
 });
+
+
+
 // CREATE NEW
 app.post("/api", (req, res) => {
     const sql = `
@@ -67,6 +70,7 @@ app.post("/api2", (req, res) => {
         res.send({msg: {text: 'Oh, we have new owner!', type: 'success'}});
     });
 });
+
 
 
 // SOFT DELETE
@@ -107,6 +111,19 @@ app.delete("/api/undo/:id", (req, res) => {
         res.send({msg: {text: 'Oh, we have thing again!', type: 'success'}});
     });
 });
+app.delete("/api2/undo/:id", (req, res) => {
+    const sql = `
+    UPDATE owners
+    SET deleted = 0
+    WHERE id = ?
+    `;
+    con.query(sql, [req.params.id], (err, result) => {
+        if (err) throw err;
+        res.send({msg: {text: 'Oh, we have owner again!', type: 'success'}});
+    });
+});
+
+
 // HARD DELETE
 app.delete("/api/:id", (req, res) => {
     const sql = `

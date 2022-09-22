@@ -29,13 +29,13 @@ function Home() {
             <div className="bin">
                 <div>
                     <h1>Sweet Home Alabama</h1>
-                    <ul>
+                    <ul className="home-list">
                         {
-                            owners?.map(ow => <li key={ow[0]}>
+                            owners?.map(ow => <li className="home-list__owner" key={ow[0]}>
                                 {ow[0]}
-                                <ul>
+                                <ul className="home-list__owner__list">
                                 {
-                                    ow[1].map(t => <li key={t.id}>
+                                    ow[1].map(t => <li className="home-list__owner__list__thing" key={t.id}>
                                         {t.title}
                                     </li>)
                                 }

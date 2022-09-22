@@ -9,8 +9,9 @@ function Create() {
     const [color, setColor] = useState('#000000');
     const [cs, setCs] = useState(false);
     const [texture, setTexture] = useState(0);
+    const [owner, setOwner] = useState('0')
 
-    const { setCreateData, textures } = useContext(DataContext);
+    const { setCreateData, textures, owners } = useContext(DataContext);
     const { createMsg } = useContext(MainContext);
 
     const add = () => {
@@ -23,17 +24,23 @@ function Create() {
             createMsg('Oh no, choose texture', 'alert');
             return;
         }
+        if ('0' === owner) {
+            createMsg('Oh no, choose owner', 'alert');
+            return;
+        }
 
         setCreateData({
             thing,
             color,
             cs: cs ? 1 : 0,
-            texture
+            texture,
+            owner: parseInt(owner)
         });
         setThing('');
         setColor('#000000')
         setCs(false);
         setTexture(0);
+        setOwner('0');
     }
 
     return (
@@ -46,6 +53,18 @@ function Create() {
                     <label>Thing</label>
                     <input type="text" value={thing} onChange={e => setThing(e.target.value)}></input>
                 </div>
+                <div className="form">
+                    <label>Owner</label>
+                    <select value={owner} onChange={e => setOwner(e.target.value)}>
+                        <option value="0">Select Owner</option>
+                        {
+                            owners?.filter(ow => !ow.deleted).map(o => <option key={o.id} value={o.id}>{o.name}</option>)
+                        }
+                    </select>
+                </div>
+
+
+
                 <div className="form">
                     <label>Color</label>
                     <input type="color" value={color} onChange={e => setColor(e.target.value)}></input>

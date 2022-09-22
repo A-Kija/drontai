@@ -51,10 +51,10 @@ app.get("/api2", (req, res) => {
 app.post("/api", (req, res) => {
     const sql = `
     INSERT INTO things
-    (title, color, cs, texture)
-    VALUES (?, ?, ?, ?)
+    (title, color, cs, texture, owner_id)
+    VALUES (?, ?, ?, ?, ?)
     `;
-    con.query(sql, [req.body.thing, req.body.color, req.body.cs, req.body.texture], (err, result) => {
+    con.query(sql, [req.body.thing, req.body.color, req.body.cs, req.body.texture, req.body.owner], (err, result) => {
         if (err) throw err;
         res.send({msg: {text: 'Oh, we have new thing!', type: 'success'}});
     });

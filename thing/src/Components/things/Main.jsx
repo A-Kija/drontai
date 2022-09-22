@@ -20,6 +20,7 @@ function Main() {
 
   const [lastUpdate, setLastUpdate] = useState(Date.now())
   const [things, setThings] = useState(null);
+  const [owners, setOwners] = useState(null);
   const [createData, setCreateData] = useState(null);
   const [binData, setBinData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
@@ -29,13 +30,22 @@ function Main() {
 
   const { createMsg } = useContext(MainContext);
 
-
+  // READ ALL
   useEffect(() => {
     axios.get('http://localhost:3003/api')
       .then(res => {
         setThings(res.data);
       });
   }, [lastUpdate]);
+
+  // READ for select
+  useEffect(() => {
+    axios.get('http://localhost:3003/api2')
+      .then(res => {
+        setOwners(res.data);
+      });
+  }, [lastUpdate]);
+
 
   // CREATE
   useEffect(() => {
@@ -109,7 +119,7 @@ function Main() {
       modalData,
       setModalData,
       setEditData,
-
+      owners
     }}>
       <div className="container">
         <div className="bin">

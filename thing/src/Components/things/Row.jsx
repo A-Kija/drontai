@@ -3,7 +3,7 @@ import DataContext from "./DataContext";
 
 function Row({ thing }) {
 
-    const { setBinData, setModalData, textures } = useContext(DataContext);
+    const { setBinData, setModalData, textures, owners } = useContext(DataContext);
 
     return (
         <div className="row">
@@ -14,6 +14,7 @@ function Row({ thing }) {
                     borderRadius: thing.cs ? '50%' : null
                 }}></div>
                 <h4>{textures.find(t => t.id === thing.texture)?.title}</h4>
+                <h6>{owners?.find(o => o.id === thing.owner_id)?.name}</h6>
             </div>
             <div className="buttons">
                 <button className="green" onClick={() => setModalData(thing)}>Edit</button>

@@ -46,6 +46,19 @@ app.post("/api", (req, res) => {
         res.send({msg: {text: 'Oh, we have new thing!', type: 'success'}});
     });
 });
+app.post("/api2", (req, res) => {
+    const sql = `
+    INSERT INTO owners
+    (name)
+    VALUES (?)
+    `;
+    con.query(sql, [req.body.name], (err, result) => {
+        if (err) throw err;
+        res.send({msg: {text: 'Oh, we have new owner!', type: 'success'}});
+    });
+});
+
+
 // SOFT DELETE
 app.delete("/api/soft/:id", (req, res) => {
     const sql = `

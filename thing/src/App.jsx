@@ -2,11 +2,14 @@ import './App.scss';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import MainContext from './Components/MainContext';
-import Main from './Components/things/Main';
+
 import { useCallback } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Nav from './Components/Nav';
 import Home from './Components/Home';
+
+import ThingsMain from './Components/things/Main';
+import OwnersMain from './Components/owners/Main';
 
 
 function App() {
@@ -28,8 +31,8 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/things" element={<Main />} />
-          <Route path="/owners" />
+          <Route path="/things" element={<ThingsMain />} />
+          <Route path="/owners" element={<OwnersMain />} />
         </Routes>
 
       </MainContext.Provider>

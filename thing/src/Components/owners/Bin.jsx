@@ -4,13 +4,13 @@ import BinRow from "./BinRow";
 
 function Bin() {
 
-    const { things } = useContext(DataContext);
+    const { owners } = useContext(DataContext);
 
-    if (things?.filter(t => t.deleted).length === 0) {
+    if (owners?.filter(o => o.deleted).length === 0) {
         return (
             <div className="card mt">
                 <div className="top">
-                    Things in Recycle Bin
+                    Owners in Recycle Bin
                 </div>
                 <div className="body">
                     <h3>Empty</h3>
@@ -22,11 +22,11 @@ function Bin() {
     return (
         <div className="card mt">
             <div className="top">
-                Things in Recycle Bin
+                Owners in Recycle Bin
             </div>
             <div className="body">
                 {
-                    things?.map(t => t.deleted ? <BinRow key={t.id} thing={t} /> : null)
+                    owners?.map(o => o.deleted ? <BinRow key={o.id} owner={o} /> : null)
                 }
             </div>
         </div>

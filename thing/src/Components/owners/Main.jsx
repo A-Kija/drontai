@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import DataContext from './DataContext';
 import List from './List';
 import Create from './Create';
-// import Bin from './Bin';
+import Bin from './Bin';
 import Edit from './Edit';
 import Msg from '../Msg';
 import { useContext } from 'react';
@@ -108,7 +108,7 @@ function Main() {
         <div className="bin">
           <div className="box-1">
             <Create />
-            {/* <Bin /> */}
+            <Bin />
           </div>
           <div className="box-2">
             <List />

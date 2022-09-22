@@ -47,6 +47,18 @@ app.get("/api2", (req, res) => {
         res.send(result);
     });
 });
+app.get("/api2/all", (req, res) => {
+    const sql = `
+    SELECT name, o.id AS oid, title, color, cs, texture, owner_id, t.id 
+    FROM owners AS o
+    INNER JOIN things AS t
+    ON t.owner_id = o.id
+    `;
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
 
 
 

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import MainContext from './Components/MainContext';
 import Main from './Components/things/Main';
 import { useCallback } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Nav from './Components/Nav';
 
 
 function App() {
@@ -17,12 +19,15 @@ function App() {
   }, []);
 
   return (
-    <MainContext.Provider value={{
-      createMsg,
-      msgs
-    }}>
-      <Main />
-    </MainContext.Provider>
+    <BrowserRouter>
+      <MainContext.Provider value={{
+        createMsg,
+        msgs
+      }}>
+        <Nav />
+        <Main />
+      </MainContext.Provider>
+    </BrowserRouter>
   );
 }
 
